@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace GettingReal
 {
-	public class Program
+	public class ConsentDatabaseController
 	{
-		static void Main(string[] args)
-		{
-
-		}
 	}
 }
