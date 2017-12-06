@@ -8,7 +8,7 @@ namespace UnitTests
 	public class UnitTest1
 	{
 		[TestMethod]
-		public void TestMethod1()
+		public void TestInsertQuery()
 		{
             Dictionary<string, object> parameter = new Dictionary<string, object>();
             parameter.Add("OwnerID", 1);
@@ -17,7 +17,7 @@ namespace UnitTests
             parameter.Add("PetBreed", "Corgi");
             parameter.Add("PetDOB", "14.05.2016");
             parameter.Add("PetWeight", 14.1d);
-            ConsentDatabaseController.ExecuteNonQuery("InsertPet", parameter);
+            ConsentDatabaseController.InsertQuery("InsertPet", parameter);
             
 		}
 	}
