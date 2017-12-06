@@ -10,7 +10,7 @@ namespace GettingReal
 	{
 		static void Main(string[] args)
 		{
-			List<object[]> table = ConsentDatabaseController.RetrieveQuery("GetPets", new Dictionary<string, object>());
+		    List<object[]> table = PermissionAPI.RetrieveAllPermissions();
 			
 			foreach(object[] row in table)
 			{

@@ -12,9 +12,9 @@ namespace GettingReal
 	{
 		private static string connectionString =
 			"Server=EALSQL1.eal.local; " +
-			"Database=DB2017_B20; " +
-			"User Id=USER_B20; " +
-			"Password=SesamLukOp_20;";
+			"Database=DB2017_B14; " +
+			"User Id=USER_B14; " +
+			"Password=SesamLukOp_14;";
 
 		public static void InsertQuery(string storedProcedure, Dictionary<string, object> parameterInput)
 		{
