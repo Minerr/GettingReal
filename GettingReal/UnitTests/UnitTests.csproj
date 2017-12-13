@@ -55,9 +55,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GettingReal\GettingReal.csproj">
+    <ProjectReference Include="..\GettingReal\Domain.csproj">
       <Project>{596523af-ddb2-4d27-807a-44ef5b7427e4}</Project>
-      <Name>GettingReal</Name>
+      <Name>Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
