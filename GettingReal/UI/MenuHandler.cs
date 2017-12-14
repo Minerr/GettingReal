@@ -55,10 +55,9 @@ namespace UI
 					return MainMenu.Instance;
 				case MenuType.SupportMenu:
 					return SupportMenu.Instance;
-				// TODO: Implement CustomerMenu class
-				//case MenuType.CustomerMenu:
-				//	return CustomerMenu.Instance;
-				default:
+                case MenuType.CustomerMenu:
+                    return CustomerMenu.Instance;
+                default:
 					return MainMenu.Instance;
 			}
 		}
