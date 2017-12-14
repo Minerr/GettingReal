@@ -25,13 +25,17 @@ namespace UI
 
         public void ShowMenu()
         {
-            
+            ShowAllPermissions();
         }
 
         public void HandleInput(string input)
         {
 
         }
+
+        private void ShowAllPermissions()
+        {
+            Console.WriteLine("This is customer menu");
+        }
     }
-}
 }

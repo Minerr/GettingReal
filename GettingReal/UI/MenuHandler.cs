@@ -55,9 +55,9 @@ namespace UI
 					return MainMenu.Instance;
 				case MenuType.SupportMenu:
 					return SupportMenu.Instance;
-                case MenuType.CustomerMenu:
-                    return CustomerMenu.Instance;
-                default:
+        		case MenuType.CustomerMenu:
+				    return CustomerMenu.Instance;
+				default:
 					return MainMenu.Instance;
 			}
 		}
