@@ -33,7 +33,7 @@ namespace UI
             switch (input)
             {
                 case "1":
-                    ShowAllPermissions();
+					ShowAllPermissions();
                     break;
                 default:
 					Console.WriteLine("Wrong choice, try again");
@@ -53,8 +53,11 @@ namespace UI
             Console.Clear();
             Console.WriteLine("Support Menu");
             Console.WriteLine("");
-            Console.WriteLine("1. Show all permissions");
-
+            Console.WriteLine("1. New permission request");
+			Console.WriteLine("2. Show all consents");
+			Console.WriteLine("3. Show all active consents");
+			Console.WriteLine("4. Revoke consent");
         }
+
     }
 }
