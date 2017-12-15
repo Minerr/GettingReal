@@ -21,8 +21,7 @@ namespace Application
 				DirectoryInfo di = Directory.CreateDirectory(path);
 
 				string fileData = permissionID + ";" + duration;
-
-				path += "\request" + permissionID + ".txt";
+				path += "\\request" + permissionID + ".txt";
 
 				File.WriteAllText(path, fileData);
 			}
