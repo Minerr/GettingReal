@@ -32,14 +32,14 @@ namespace UI
 			SupportMainMenu();
 		}
 
-        public void HandleInput(string input)
-        {
-            switch (input)
-            {
-                case "1":
+		public void HandleInput(string input)
+		{
+			switch (input)
+			{
+				case "1":
 					NewPermissionRequest();
-                    break;
-                default:
+					break;
+				default:
 					Console.WriteLine("Wrong choice, try again");
 					break;
 			}
@@ -60,8 +60,8 @@ namespace UI
 
 		}
 
-        private void ShowAllPermissions()
-        {
+		private void ShowAllPermissions()
+		{
 			//     List<object[]> allPermissions = PermissionAPI.RetrieveAllPermissions();
 
 			//     foreach (object[] permission in allPermissions)
@@ -71,7 +71,7 @@ namespace UI
 			//	Console.WriteLine("Det er er permission");
 			//}
 			//     }
-        }
+		}
 
 		private void SupportMainMenu()
 		{
@@ -81,18 +81,14 @@ namespace UI
 				Console.WriteLine("");
 				Console.WriteLine("Insert UserID");
 				userID = Console.ReadLine();
-				SupportMainMenu();
 			}
-			else
-			{
-				Console.Clear();
-				Console.WriteLine("Support Menu");
-				Console.WriteLine("");
-				Console.WriteLine("1. New permission request");
-				Console.WriteLine("2. Show all consents");
-				Console.WriteLine("3. Show all active consents");
-				Console.WriteLine("4. Revoke consent");
-			}
+			Console.Clear();
+			Console.WriteLine("Support Menu");
+			Console.WriteLine("");
+			Console.WriteLine("1. New permission request");
+			Console.WriteLine("2. Show all consents");
+			Console.WriteLine("3. Show all active consents");
+			Console.WriteLine("4. Revoke consent");
 		}
 	}
 }
