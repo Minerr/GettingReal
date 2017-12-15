@@ -71,7 +71,8 @@ namespace UI
 					Console.WriteLine("Wrong choice, try again");
 					break;
 			}
-			Console.WriteLine("Press any key to continue");
+
+			Console.Write("Press any key to continue...");
 			Console.ReadKey();
 		}
 
@@ -85,7 +86,6 @@ namespace UI
 			string duration = Console.ReadLine();
 
 			PermissionAPI.CreatePermissionRequest(this.userID, permissionChoice, duration);
-
 		}
 
 		private void ShowAllPermissions()
