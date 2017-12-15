@@ -100,5 +100,22 @@ namespace UI
 			//}
 			//     }
 		}
+
+		private void ShowAllConsent()
+		{
+			
+		}
+
+		private void ShowAllActiveConsent()
+		{
+			
+		}
+
+		private void RevokeConsent()
+		{
+			
+		}
+
+
 	}
 }
