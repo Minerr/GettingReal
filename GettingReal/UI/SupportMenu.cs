@@ -82,6 +82,7 @@ namespace UI
 				Console.WriteLine("Insert UserID");
 				userID = Console.ReadLine();
 			}
+
 			Console.Clear();
 			Console.WriteLine("Support Menu");
 			Console.WriteLine("");
