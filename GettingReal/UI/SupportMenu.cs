@@ -31,14 +31,14 @@ namespace UI
 			SupportMainMenu();
 		}
 
-		public void HandleInput(string input)
-		{
-			switch (input)
-			{
-				case "1":
-					ShowAllPermissions();
-					break;
-				default:
+        public void HandleInput(string input)
+        {
+            switch (input)
+            {
+                case "1":
+					NewPermissionRequest();
+                    break;
+                default:
 					Console.WriteLine("Wrong choice, try again");
 					break;
 			}
@@ -46,8 +46,17 @@ namespace UI
 			Console.ReadKey();
 		}
 
-		private void ShowAllPermissions()
+		private void NewPermissionRequest()
 		{
+			ShowAllPermissions();
+
+
+
+		}
+
+
+        private void ShowAllPermissions()
+        {
 			//     List<object[]> allPermissions = PermissionAPI.RetrieveAllPermissions();
 
 			//     foreach (object[] permission in allPermissions)
@@ -57,7 +66,13 @@ namespace UI
 			//	Console.WriteLine("Det er er permission");
 			//}
 			//     }
-		}
+			Console.WriteLine("Choose permission Id");
+			string permissionChoice = Console.ReadLine();
+			Console.WriteLine("Define duration of permission");
+			string duration = Console.ReadLine();
+			
+
+        }
 
 		private void SupportMainMenu()
 		{
