@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Application;
 
 namespace UI
 {
@@ -45,7 +46,15 @@ namespace UI
 
         private void ShowAllPermissions()
         {
-            Console.WriteLine("This is support menu");
+	   //     List<object[]> allPermissions = PermissionAPI.RetrieveAllPermissions();
+
+	   //     foreach (object[] permission in allPermissions)
+	   //     {
+		  //      for (int i = 0; i < permission.Length; i++)
+		  //      {
+				//	Console.WriteLine("Det er er permission");
+				//}
+	   //     }
         }
 
         private void SupportMainMenu()
