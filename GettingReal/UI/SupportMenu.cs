@@ -39,6 +39,15 @@ namespace UI
 				case "1":
 					NewPermissionRequest();
 					break;
+				//case "2":
+				//	ShowAllConsent();
+				//	break;
+				//case "3":
+				//	ShowAllActiveConsent();
+				//	break;
+				//case "4":
+				//	RevokeConsent();
+				//	break;
 				default:
 					Console.WriteLine("Wrong choice, try again");
 					break;
