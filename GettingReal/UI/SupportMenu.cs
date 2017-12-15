@@ -46,15 +46,21 @@ namespace UI
 
         private void ShowAllPermissions()
         {
-	   //     List<object[]> allPermissions = PermissionAPI.RetrieveAllPermissions();
+			//     List<object[]> allPermissions = PermissionAPI.RetrieveAllPermissions();
 
-	   //     foreach (object[] permission in allPermissions)
-	   //     {
-		  //      for (int i = 0; i < permission.Length; i++)
-		  //      {
-				//	Console.WriteLine("Det er er permission");
-				//}
-	   //     }
+			//     foreach (object[] permission in allPermissions)
+			//     {
+			//      for (int i = 0; i < permission.Length; i++)
+			//      {
+			//	Console.WriteLine("Det er er permission");
+			//}
+			//     }
+			Console.WriteLine("Choose permission Id");
+			string permissionChoice = Console.ReadLine();
+			Console.WriteLine("Define duration of permission");
+			string duration = Console.ReadLine();
+			
+
         }
 
         private void SupportMainMenu()
