@@ -34,7 +34,7 @@ namespace UI
             switch (input)
             {
                 case "1":
-					ShowAllPermissions();
+					NewPermissionRequest();
                     break;
                 default:
 					Console.WriteLine("Wrong choice, try again");
@@ -43,6 +43,15 @@ namespace UI
 			Console.WriteLine("Press any key to continue");
 			Console.ReadKey();
 		}
+
+		private void NewPermissionRequest()
+		{
+			ShowAllPermissions();
+
+
+
+		}
+
 
         private void ShowAllPermissions()
         {
