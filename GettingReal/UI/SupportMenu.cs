@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Application;
+using System.IO;
 
 namespace UI
 {
@@ -48,10 +49,14 @@ namespace UI
 		{
 			ShowAllPermissions();
 
+			Console.WriteLine("Choose permission Id");
+			string permissionChoice = Console.ReadLine();
+			Console.WriteLine("Define duration of permission");
+			string duration = Console.ReadLine();
 
+			PermissionAPI.CreatePermissionRequest(this.userID, permissionChoice, duration);
 
 		}
-
 
         private void ShowAllPermissions()
         {
@@ -64,12 +69,6 @@ namespace UI
 			//	Console.WriteLine("Det er er permission");
 			//}
 			//     }
-			Console.WriteLine("Choose permission Id");
-			string permissionChoice = Console.ReadLine();
-			Console.WriteLine("Define duration of permission");
-			string duration = Console.ReadLine();
-			
-
         }
 
         private void SupportMainMenu()
