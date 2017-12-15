@@ -7,66 +7,78 @@ using Application;
 
 namespace UI
 {
-    public class SupportMenu : IMenu
-    {
-        private static SupportMenu instance;
-        private SupportMenu() { }
-        public static SupportMenu Instance
-        {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new SupportMenu();
-                }
+	public class SupportMenu : IMenu
+	{
+		private string userID;
 
-                return instance;
-            }
-        }
+		private static SupportMenu instance;
+		private SupportMenu() { }
+		public static SupportMenu Instance
+		{
+			get
+			{
+				if (instance == null)
+				{
+					instance = new SupportMenu();
+				}
 
-        public void ShowMenu()
-        {
-            SupportMainMenu();
-        }
+				return instance;
+			}
+		}
 
-        public void HandleInput(string input)
-        {
-            switch (input)
-            {
-                case "1":
+		public void ShowMenu()
+		{
+			SupportMainMenu();
+		}
+
+		public void HandleInput(string input)
+		{
+			switch (input)
+			{
+				case "1":
 					ShowAllPermissions();
-                    break;
-                default:
+					break;
+				default:
 					Console.WriteLine("Wrong choice, try again");
-                    break;
-            }
+					break;
+			}
 			Console.WriteLine("Press any key to continue");
 			Console.ReadKey();
 		}
 
-        private void ShowAllPermissions()
-        {
-	   //     List<object[]> allPermissions = PermissionAPI.RetrieveAllPermissions();
+		private void ShowAllPermissions()
+		{
+			//     List<object[]> allPermissions = PermissionAPI.RetrieveAllPermissions();
 
-	   //     foreach (object[] permission in allPermissions)
-	   //     {
-		  //      for (int i = 0; i < permission.Length; i++)
-		  //      {
-				//	Console.WriteLine("Det er er permission");
-				//}
-	   //     }
-        }
+			//     foreach (object[] permission in allPermissions)
+			//     {
+			//      for (int i = 0; i < permission.Length; i++)
+			//      {
+			//	Console.WriteLine("Det er er permission");
+			//}
+			//     }
+		}
 
-        private void SupportMainMenu()
-        {
-            Console.Clear();
-            Console.WriteLine("Support Menu");
-            Console.WriteLine("");
-            Console.WriteLine("1. New permission request");
-			Console.WriteLine("2. Show all consents");
-			Console.WriteLine("3. Show all active consents");
-			Console.WriteLine("4. Revoke consent");
-        }
-
-    }
+		private void SupportMainMenu()
+		{
+			if (userID == null)
+			{
+				Console.WriteLine("Support Menu");
+				Console.WriteLine("");
+				Console.WriteLine("Insert UserID");
+				userID = Console.ReadLine();
+				SupportMainMenu();
+			}
+			else
+			{
+				Console.Clear();
+				Console.WriteLine("Support Menu");
+				Console.WriteLine("");
+				Console.WriteLine("1. New permission request");
+				Console.WriteLine("2. Show all consents");
+				Console.WriteLine("3. Show all active consents");
+				Console.WriteLine("4. Revoke consent");
+			}
+		}
+	}
 }
