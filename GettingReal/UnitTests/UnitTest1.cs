@@ -17,7 +17,7 @@ namespace UnitTests
             parameter.Add("PetBreed", "Corgi");
             parameter.Add("PetDOB", "14.05.2016");
             parameter.Add("PetWeight", 14.1d);
-            ConsentDatabaseController.InsertQuery("InsertPet", parameter);
+            ConsentDatabaseController.ExecuteNonQuery("InsertPet", parameter);
             
 		}
 	}
