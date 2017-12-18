@@ -16,7 +16,7 @@ namespace GettingReal
 			"User Id=USER_B14; " +
 			"Password=SesamLukOp_14;";
 
-		public static void InsertQuery(string storedProcedure, Dictionary<string, object> parameterInput)
+		public static void ExecuteNonQuery(string storedProcedure, Dictionary<string, object> parameterInput)
 		{
 			using(SqlConnection con = new SqlConnection(connectionString))
 			{

@@ -17,13 +17,23 @@ namespace Application
             return ConsentDatabaseController.RetrieveQuery("SaveConsent", parameterInput);
         }
 
-		public static List<object[]> GetActiveConsents(int userID)
-		{
-			Dictionary<string, object> parameterInput = new Dictionary<string, object>();
+	    public static List<object[]> RetrieveAllConsents(int userID)
+	    {
+		    Dictionary<string, object> parameterInput = new Dictionary<string, object>();
 
-			parameterInput.Add("UserID", userID);
+		    parameterInput.Add("UserID", userID);
 
-			return ConsentDatabaseController.RetrieveQuery("RetrieveActiveConsents", parameterInput);
-		}
+		    return ConsentDatabaseController.RetrieveQuery("RetrieveAllConsents", parameterInput);
+	    }
+
+	    public static void RevokeConsent(int userID, int permissionID)
+	    {
+		    Dictionary<string, object> parameterInput = new Dictionary<string, object>();
+
+		    parameterInput.Add("UserID", userID);
+		    parameterInput.Add("PermissionID", permissionID);
+
+		    ConsentDatabaseController.ExecuteNonQuery("RevokeConsent", parameterInput);
+	    }
 	}
 }
