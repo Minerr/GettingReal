@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Application;
 using System.IO;
+using System.Runtime.CompilerServices;
 
 namespace UI
 {
@@ -14,7 +15,11 @@ namespace UI
 		private const int MAX_COLUMN_LENGTH = 40;
 
 		private static SupportMenu instance;
-		private SupportMenu() { }
+
+		private SupportMenu()
+		{
+		}
+
 		public static SupportMenu Instance
 		{
 			get
@@ -49,6 +54,7 @@ namespace UI
 			Console.WriteLine("1. New permission request");
 			Console.WriteLine("2. Show all consents");
 			Console.WriteLine("3. Revoke consent");
+			Console.WriteLine("4. Show request response");
 		}
 
 		public void HandleInput(string input)
@@ -91,18 +97,22 @@ namespace UI
 			PermissionAPI.CreatePermissionRequest(this.userID, permissionChoice, duration);
 		}
 
-		private void ShowUserConsentHistory()
+		private void ShowAllConsent()
 		{
-			//Requires Logging system.
+			printTable(ConsentAPI.RetrieveAllConsents(Convert.ToInt32(this.userID)));
 		}
 
-			//     foreach (object[] permission in allPermissions)
-			//     {
-			//      for (int i = 0; i < permission.Length; i++)
-			//      {
-			//	Console.WriteLine("Det er er permission");
-			//}
-			//     }
+		private void RevokeConsent()
+		{
+			Console.WriteLine("Enter permissionId");
+			string permissionID = Console.ReadLine();
+
+			ConsentAPI.RevokeConsent(Convert.ToInt32(this.userID), Convert.ToInt32(permissionID));
+		}
+
+		private void ShowRequestResponse()
+		{
+			
 		}
 
 		private void printTable(List<object[]> table)
@@ -110,17 +120,17 @@ namespace UI
 			int consoleCharsPerTabs = 8;
 
 			int numberOfColumns = table[0].Length;
-			float[] tabsPerColumn = new float[numberOfColumns]; 
+			float[] tabsPerColumn = new float[numberOfColumns];
 
 			// Find the longest sentence and calculates the number of tabs, then save that.
-			foreach(object[] row in table)
+			foreach (object[] row in table)
 			{
-				for(int i = 0; i < numberOfColumns; i++)
+				for (int i = 0; i < numberOfColumns; i++)
 				{
 					string columnValue = Convert.ToString(row[i]);
 					float stringInTabs = columnValue.Length / consoleCharsPerTabs;
 
-					if(tabsPerColumn[i] < stringInTabs)
+					if (tabsPerColumn[i] < stringInTabs)
 					{
 						tabsPerColumn[i] = stringInTabs;
 					}
@@ -128,22 +138,23 @@ namespace UI
 			}
 
 			// Display each row and its column value. Insert missing tabs based on the length of the column value.
-			foreach(object[] row in table)
+			foreach (object[] row in table)
 			{
 				string printableRow = "";
 
-				for(int i = 0; i < row.Length; i++)
+				for (int i = 0; i < row.Length; i++)
 				{
-					string columnValue = Convert.ToString(row[i]);	// Dette er en kolonne i rækken.
-					printableRow += columnValue;					// Gem kolonne værdien til den række der skal printes ud.
+					string columnValue = Convert.ToString(row[i]); // Dette er en kolonne i rækken.
+					printableRow += columnValue; // Gem kolonne værdien til den række der skal printes ud.
 
-					if(i != row.Length - 1)	// Hvis det ikke er sidste kolonne, så indsæt tabs.
+					if (i != row.Length - 1) // Hvis det ikke er sidste kolonne, så indsæt tabs.
 					{
 						printableRow += "\t";
-						float tabsForColumn = tabsPerColumn[i] - (columnValue.Length / consoleCharsPerTabs);	//Finder hvor mange tabs der skal sættes.
+						float tabsForColumn =
+							tabsPerColumn[i] - (columnValue.Length / consoleCharsPerTabs); //Finder hvor mange tabs der skal sættes.
 
 						//Indsætter mellemrum som tabs, da Console har lange tabs.
-						for(int tab = 0; tab <= (tabsForColumn * consoleCharsPerTabs) -1; tab++)
+						for (int tab = 0; tab <= (tabsForColumn * consoleCharsPerTabs) - 1; tab++)
 						{
 							printableRow += " ";
 						}
@@ -153,6 +164,5 @@ namespace UI
 				Console.WriteLine(printableRow);
 			}
 		}
-
 	}
 }

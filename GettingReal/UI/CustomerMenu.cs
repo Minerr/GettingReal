@@ -8,6 +8,7 @@ namespace UI
 {
     public class CustomerMenu : IMenu
     {
+	    private string userID;
         private static CustomerMenu instance;
         private CustomerMenu() { }
         public static CustomerMenu Instance
@@ -28,12 +29,62 @@ namespace UI
             ShowAllPermissions();
         }
 
-        public void HandleInput(string input)
-        {
+	    private void CustomerMainMenu()
+	    {
+		    if (userID == null)
+		    {
+			    Console.WriteLine("Customer Menu");
+			    Console.WriteLine("");
+			    Console.WriteLine("Insert UserID");
+			    userID = Console.ReadLine();
+		    }
 
-        }
+		    Console.Clear();
+		    Console.WriteLine("Customer Menu");
+		    Console.WriteLine("");
+		    Console.WriteLine("1. Show pending permission requests");
+		    Console.WriteLine("2. Show active consents");
+		    Console.WriteLine("3. Revoke consent");
+	    }
 
-        private void ShowAllPermissions()
+	    public void HandleInput(string input)
+	    {
+		    switch (input)
+		    {
+			    case "1":
+				    ShowPendingPermissionRequests();
+				    break;
+			    case "2":
+				    ShowActiveConsent();
+				    break;
+			    case "3":
+				    RevokeConsent();
+				    break;
+			    default:
+				    Console.WriteLine("Wrong choice, try again");
+				    break;
+		    }
+
+		    Console.Write("Press any key to continue...");
+		    Console.ReadKey();
+	    }
+
+	    private void RevokeConsent()
+	    {
+		    throw new NotImplementedException();
+	    }
+
+	    private void ShowActiveConsent()
+	    {
+		    throw new NotImplementedException();
+	    }
+
+	    private void ShowPendingPermissionRequests()
+	    {
+		    throw new NotImplementedException();
+	    }
+
+	    private void ShowAllPermissions()
         {
             Console.WriteLine("This is customer menu");
         }
