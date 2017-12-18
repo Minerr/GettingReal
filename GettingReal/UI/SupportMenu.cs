@@ -11,6 +11,7 @@ namespace UI
 	public class SupportMenu : IMenu
 	{
 		private string userID;
+		private const int MAX_COLUMN_LENGTH = 40;
 
 		private static SupportMenu instance;
 		private SupportMenu() { }
@@ -46,7 +47,7 @@ namespace UI
 			Console.WriteLine("Support Menu");
 			Console.WriteLine("");
 			Console.WriteLine("1. New permission request");
-			Console.WriteLine("2. Show all consents");
+			Console.WriteLine("2. Show user consent history");
 			Console.WriteLine("3. Show all active consents");
 			Console.WriteLine("4. Revoke consent");
 		}
@@ -58,15 +59,15 @@ namespace UI
 				case "1":
 					NewPermissionRequest();
 					break;
-				//case "2":
-				//	ShowAllConsent();
-				//	break;
-				//case "3":
-				//	ShowAllActiveConsent();
-				//	break;
-				//case "4":
-				//	RevokeConsent();
-				//	break;
+				case "2":
+					ShowUserConsentHistory();
+					break;
+				case "3":
+					ShowActiveConsents();
+					break;
+				case "4":
+					RevokeConsent();
+					break;
 				default:
 					Console.WriteLine("Wrong choice, try again");
 					break;
@@ -74,6 +75,12 @@ namespace UI
 
 			Console.Write("Press any key to continue...");
 			Console.ReadKey();
+		}
+
+		private void ShowAllPermissions()
+		{
+			List<object[]> allPermissions = PermissionAPI.RetrieveAllPermissions();
+			printTable(allPermissions);
 		}
 
 		private void NewPermissionRequest()
@@ -88,34 +95,77 @@ namespace UI
 			PermissionAPI.CreatePermissionRequest(this.userID, permissionChoice, duration);
 		}
 
-		private void ShowAllPermissions()
+		private void ShowUserConsentHistory()
 		{
-			//     List<object[]> allPermissions = PermissionAPI.RetrieveAllPermissions();
-
-			//     foreach (object[] permission in allPermissions)
-			//     {
-			//      for (int i = 0; i < permission.Length; i++)
-			//      {
-			//	Console.WriteLine("Det er er permission");
-			//}
-			//     }
+			//Requires Logging system.
 		}
 
-		private void ShowAllConsent()
+		private void ShowActiveConsents()
 		{
-			
-		}
-
-		private void ShowAllActiveConsent()
-		{
-			
+			List<object[]> activeConsents = ConsentAPI.GetActiveConsents(Int32.Parse(this.userID));
+			printTable(activeConsents);
 		}
 
 		private void RevokeConsent()
 		{
-			
+			printTable(new List<object[]>
+			{
+				new String[] { "ID", "Text", "Created", "Time" },
+				new String[] { "1", "Hej med dig.", "11.05.2015", "12.05.2015" },
+				new String[] { "2", "The quick brown fox jumps over the lazy dog.", "09.03.2016", "12.03.2016" },
+				new String[] { "3", "Lorem Ipsum dolor sit amet.", "25.01.2017", "28.02.2017" },
+				new String[] { "4", "Der indgives hvert år enorme strenge af blade af større eller mindre tilsnit.", "01.05.2017", "04.08.2017" }
+			});
 		}
 
+		private void printTable(List<object[]> table)
+		{
+			int consoleCharsPerTabs = 8;
+
+			int numberOfColumns = table[0].Length;
+			float[] tabsPerColumn = new float[numberOfColumns]; 
+
+			// Find the longest sentence and calculates the number of tabs, then save that.
+			foreach(object[] row in table)
+			{
+				for(int i = 0; i < numberOfColumns; i++)
+				{
+					string columnValue = Convert.ToString(row[i]);
+					float stringInTabs = columnValue.Length / consoleCharsPerTabs;
+
+					if(tabsPerColumn[i] < stringInTabs)
+					{
+						tabsPerColumn[i] = stringInTabs;
+					}
+				}
+			}
+
+			// Display each row and its column value. Insert missing tabs based on the length of the column value.
+			foreach(object[] row in table)
+			{
+				string printableRow = "";
+
+				for(int i = 0; i < row.Length; i++)
+				{
+					string columnValue = Convert.ToString(row[i]);	// Dette er en kolonne i rækken.
+					printableRow += columnValue;					// Gem kolonne værdien til den række der skal printes ud.
+
+					if(i != row.Length - 1)	// Hvis det ikke er sidste kolonne, så indsæt tabs.
+					{
+						printableRow += "\t";
+						float tabsForColumn = tabsPerColumn[i] - (columnValue.Length / consoleCharsPerTabs);	//Finder hvor mange tabs der skal sættes.
+
+						//Indsætter mellemrum som tabs, da Console har lange tabs.
+						for(int tab = 0; tab <= (tabsForColumn * consoleCharsPerTabs) -1; tab++)
+						{
+							printableRow += " ";
+						}
+					}
+				}
+
+				Console.WriteLine(printableRow);
+			}
+		}
 
 	}
 }
