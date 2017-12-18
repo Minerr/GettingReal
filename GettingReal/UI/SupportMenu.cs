@@ -47,8 +47,7 @@ namespace UI
 			Console.WriteLine("");
 			Console.WriteLine("1. New permission request");
 			Console.WriteLine("2. Show all consents");
-			Console.WriteLine("3. Show all active consents");
-			Console.WriteLine("4. Revoke consent");
+			Console.WriteLine("3. Revoke consent");
 		}
 
 		public void HandleInput(string input)
@@ -58,15 +57,12 @@ namespace UI
 				case "1":
 					NewPermissionRequest();
 					break;
-				//case "2":
-				//	ShowAllConsent();
-				//	break;
-				//case "3":
-				//	ShowAllActiveConsent();
-				//	break;
-				//case "4":
-				//	RevokeConsent();
-				//	break;
+				case "2":
+					ShowAllConsent();
+					break;
+				case "3":
+					RevokeConsent();
+					break;
 				default:
 					Console.WriteLine("Wrong choice, try again");
 					break;
@@ -103,17 +99,15 @@ namespace UI
 
 		private void ShowAllConsent()
 		{
-			
-		}
-
-		private void ShowAllActiveConsent()
-		{
-			
+			ConsentAPI.RetrieveAllConsents(Convert.ToInt32(this.userID));
 		}
 
 		private void RevokeConsent()
 		{
-			
+			Console.WriteLine("Enter permissionId");
+			string permissionID = Console.ReadLine();
+
+			ConsentAPI.RevokeConsent(Convert.ToInt32(this.userID), Convert.ToInt32(permissionID));
 		}
 
 
