@@ -47,9 +47,8 @@ namespace UI
 			Console.WriteLine("Support Menu");
 			Console.WriteLine("");
 			Console.WriteLine("1. New permission request");
-			Console.WriteLine("2. Show user consent history");
-			Console.WriteLine("3. Show all active consents");
-			Console.WriteLine("4. Revoke consent");
+			Console.WriteLine("2. Show all consents");
+			Console.WriteLine("3. Revoke consent");
 		}
 
 		public void HandleInput(string input)
@@ -60,12 +59,9 @@ namespace UI
 					NewPermissionRequest();
 					break;
 				case "2":
-					ShowUserConsentHistory();
+					ShowAllConsent();
 					break;
 				case "3":
-					ShowActiveConsents();
-					break;
-				case "4":
 					RevokeConsent();
 					break;
 				default:
@@ -100,22 +96,13 @@ namespace UI
 			//Requires Logging system.
 		}
 
-		private void ShowActiveConsents()
-		{
-			List<object[]> activeConsents = ConsentAPI.GetActiveConsents(Int32.Parse(this.userID));
-			printTable(activeConsents);
-		}
-
-		private void RevokeConsent()
-		{
-			printTable(new List<object[]>
-			{
-				new String[] { "ID", "Text", "Created", "Time" },
-				new String[] { "1", "Hej med dig.", "11.05.2015", "12.05.2015" },
-				new String[] { "2", "The quick brown fox jumps over the lazy dog.", "09.03.2016", "12.03.2016" },
-				new String[] { "3", "Lorem Ipsum dolor sit amet.", "25.01.2017", "28.02.2017" },
-				new String[] { "4", "Der indgives hvert år enorme strenge af blade af større eller mindre tilsnit.", "01.05.2017", "04.08.2017" }
-			});
+			//     foreach (object[] permission in allPermissions)
+			//     {
+			//      for (int i = 0; i < permission.Length; i++)
+			//      {
+			//	Console.WriteLine("Det er er permission");
+			//}
+			//     }
 		}
 
 		private void printTable(List<object[]> table)
