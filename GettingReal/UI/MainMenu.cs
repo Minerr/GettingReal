@@ -36,10 +36,10 @@ namespace UI
 			switch(input)
 			{
 				case "1":
-					MenuHandler.Instance.ChangeCurrentMenu(MenuHandler.MenuType.SupportMenu);
+					MenuHandler.ChangeCurrentMenu(MenuHandler.MenuType.SupportMenu);
 					break;
 				case "2":
-					MenuHandler.Instance.ChangeCurrentMenu(MenuHandler.MenuType.CustomerMenu);
+					MenuHandler.ChangeCurrentMenu(MenuHandler.MenuType.CustomerMenu);
 					break;
 			}
 		}

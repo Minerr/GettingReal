@@ -21,24 +21,11 @@ namespace UI
 
 			while(isRunning)
 			{
-				ShowMenu();
-				HandleInput();
+				MenuHandler.ShowMenu();
+
+				string input = Console.ReadLine();
+				MenuHandler.HandleInput(input);
 			}
 		}
-
-		private void ShowMenu()
-		{
-			Console.Clear();
-			MenuHandler.Instance.ShowMenu();
-
-		}
-
-		private void HandleInput()
-		{
-			string input = Console.ReadLine();
-			MenuHandler.Instance.HandleInput(input);
-		}
-
-
 	}
 }

@@ -70,6 +70,9 @@ namespace UI
 				case "3":
 					RevokeConsent();
 					break;
+				case "4":
+					ShowRequestResponse();
+					break;
 				default:
 					Console.WriteLine("Wrong choice, try again");
 					break;
@@ -81,8 +84,7 @@ namespace UI
 
 		private void ShowAllPermissions()
 		{
-			List<object[]> allPermissions = PermissionAPI.RetrieveAllPermissions();
-			printTable(allPermissions);
+			GUIHandler.PrintTable(PermissionAPI.RetrieveAllPermissions());
 		}
 
 		private void NewPermissionRequest()
@@ -99,7 +101,7 @@ namespace UI
 
 		private void ShowAllConsent()
 		{
-			printTable(ConsentAPI.RetrieveAllConsents(Convert.ToInt32(this.userID)));
+			GUIHandler.PrintTable(ConsentAPI.RetrieveAllConsents(Convert.ToInt32(this.userID)));
 		}
 
 		private void RevokeConsent()
@@ -113,56 +115,6 @@ namespace UI
 		private void ShowRequestResponse()
 		{
 			
-		}
-
-		private void printTable(List<object[]> table)
-		{
-			int consoleCharsPerTabs = 8;
-
-			int numberOfColumns = table[0].Length;
-			float[] tabsPerColumn = new float[numberOfColumns];
-
-			// Find the longest sentence and calculates the number of tabs, then save that.
-			foreach (object[] row in table)
-			{
-				for (int i = 0; i < numberOfColumns; i++)
-				{
-					string columnValue = Convert.ToString(row[i]);
-					float stringInTabs = columnValue.Length / consoleCharsPerTabs;
-
-					if (tabsPerColumn[i] < stringInTabs)
-					{
-						tabsPerColumn[i] = stringInTabs;
-					}
-				}
-			}
-
-			// Display each row and its column value. Insert missing tabs based on the length of the column value.
-			foreach (object[] row in table)
-			{
-				string printableRow = "";
-
-				for (int i = 0; i < row.Length; i++)
-				{
-					string columnValue = Convert.ToString(row[i]); // Dette er en kolonne i rækken.
-					printableRow += columnValue; // Gem kolonne værdien til den række der skal printes ud.
-
-					if (i != row.Length - 1) // Hvis det ikke er sidste kolonne, så indsæt tabs.
-					{
-						printableRow += "\t";
-						float tabsForColumn =
-							tabsPerColumn[i] - (columnValue.Length / consoleCharsPerTabs); //Finder hvor mange tabs der skal sættes.
-
-						//Indsætter mellemrum som tabs, da Console har lange tabs.
-						for (int tab = 0; tab <= (tabsForColumn * consoleCharsPerTabs) - 1; tab++)
-						{
-							printableRow += " ";
-						}
-					}
-				}
-
-				Console.WriteLine(printableRow);
-			}
 		}
 	}
 }

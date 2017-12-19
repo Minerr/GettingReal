@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace UI
 {
-	public class MenuHandler : IMenu
+	public static class MenuHandler
 	{
 		public enum MenuType
 		{
@@ -15,39 +15,40 @@ namespace UI
 			CustomerMenu
 		}
 
-		private static MenuHandler instance;
+		//private static MenuHandler instance;
 
-		public static MenuHandler Instance
-		{
-			get
-			{
-				if(instance == null)
-				{
-					instance = new MenuHandler();
-				}
+		//public static MenuHandler Instance
+		//{
+		//	get
+		//	{
+		//		if(instance == null)
+		//		{
+		//			instance = new MenuHandler();
+		//		}
 
-				return instance;
-			}
-		}
+		//		return instance;
+		//	}
+		//}
 		
-		private MenuType currentMenu;
+		private static MenuType currentMenu = MenuType.MainMenu;
 
-		private MenuHandler()
-		{
-			currentMenu = MenuType.MainMenu;
-		}
+		//private MenuHandler()
+		//{
+		//	currentMenu;
+		//}
 
-		public void ShowMenu()
+		public static void ShowMenu()
 		{
+			Console.Clear();
 			GetMenu().ShowMenu();
 		}
 
-		public void HandleInput(string input)
+		public static void HandleInput(string input)
 		{
 			GetMenu().HandleInput(input);
 		}
 	
-		private IMenu GetMenu()
+		private static IMenu GetMenu()
 		{
 			switch(currentMenu)
 			{
@@ -62,7 +63,7 @@ namespace UI
 			}
 		}
 
-		public void ChangeCurrentMenu(MenuType menuType)
+		public static void ChangeCurrentMenu(MenuType menuType)
 		{
 			currentMenu = menuType;
 		}
