@@ -39,7 +39,6 @@ namespace GettingReal
 				}
 			}
 		}
-
 		public static List<object[]> RetrieveQuery(string storedProcedure, Dictionary<string, object> parameterInput)
 		{
 			using(SqlConnection con = new SqlConnection(connectionString))
@@ -66,6 +65,37 @@ namespace GettingReal
 
 			return null;
 		}
+
+		public static bool CheckQuery(string storedProcedure, Dictionary<string, object> parameterInput)
+		{
+			using(SqlConnection con = new SqlConnection(connectionString))
+			{
+				try
+				{
+					con.Open();
+
+					SqlCommand command = new SqlCommand(storedProcedure, con);
+					command.CommandType = CommandType.StoredProcedure;
+					foreach(KeyValuePair<string, object> parameter in parameterInput)
+					{
+						command.Parameters.Add(new SqlParameter("@" + parameter.Key, parameter.Value));
+					}
+
+					SqlDataReader reader = command.ExecuteReader();
+					if(reader.HasRows)
+					{
+						return true;
+					}
+				}
+				catch(SqlException e)
+				{
+					Console.WriteLine("ERROR! " + e.Message);
+				}
+			}
+
+			return false;
+		}
+
 
 		private static List<object[]> ConvertSqlDataToList(SqlDataReader reader)
 		{

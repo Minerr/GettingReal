@@ -51,5 +51,15 @@ namespace Application
 
 			return table;
 		}
+
+		public static bool CheckForConsent(int userID, int permissionID)
+		{
+			Dictionary<string, object> parameterInput = new Dictionary<string, object>();
+
+			parameterInput.Add("UserID", userID);
+			parameterInput.Add("PermissionID", permissionID);
+
+			return ConsentDatabaseController.CheckQuery("CheckConsent", parameterInput);
+		}
 	}
 }

@@ -96,7 +96,15 @@ namespace UI
 			Console.WriteLine("Define duration of permission");
 			string duration = Console.ReadLine();
 
-			PermissionAPI.CreatePermissionRequest(this.userID, permissionChoice, duration);
+			if(ConsentAPI.CheckForConsent(Convert.ToInt32(this.userID), Convert.ToInt32(permissionChoice)))
+			{
+				Console.WriteLine("Consent for this permission has already been given for this user.");
+			}
+			else
+			{
+				PermissionAPI.CreatePermissionRequest(this.userID, permissionChoice, duration);
+				Console.WriteLine("Permission request has been created.");
+			}
 		}
 
 		private void ShowAllConsent()
@@ -106,6 +114,8 @@ namespace UI
 
 		private void RevokeConsent()
 		{
+			ShowAllPermissions();
+
 			Console.WriteLine("Enter permissionId");
 			string permissionID = Console.ReadLine();
 

@@ -10,6 +10,11 @@ namespace UI
 	{
 		public static void PrintTable(List<object[]> table)
 		{
+			if(table.Count <= 0)
+			{
+				return;
+			}
+
 			int consoleCharsPerTabs = 8;
 
 			int numberOfColumns = table[0].Length;
