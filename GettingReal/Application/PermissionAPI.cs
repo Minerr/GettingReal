@@ -15,20 +15,10 @@ namespace Application
 		public static void CreatePermissionRequest(string userID, string permissionID, string duration)
 		{
 			string path = @"c:\GettingReal\Customers\" + userID;
+			string fileData = permissionID + ";" + duration;
+			string fileName = "request" + permissionID;
 
-			try
-			{
-				DirectoryInfo di = Directory.CreateDirectory(path);
-
-				string fileData = permissionID + ";" + duration;
-				path += "\\request" + permissionID + ".txt";
-
-				File.WriteAllText(path, fileData);
-			}
-			catch(Exception e)
-			{
-				Console.WriteLine("Could not create permission request!", e.ToString());
-			}
+			FileHandler.SaveFile(path, fileData, fileName);
 		}
 	}
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Application;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -26,7 +27,7 @@ namespace UI
 
         public void ShowMenu()
         {
-            ShowAllPermissions();
+			CustomerMainMenu();
         }
 
 	    private void CustomerMainMenu()
@@ -81,7 +82,7 @@ namespace UI
 
 	    private void ShowPendingPermissionRequests()
 	    {
-		    throw new NotImplementedException();
+			GUIHandler.PrintTable(ConsentAPI.RetrieveRequestResponses(Convert.ToInt32(this.userID)));
 	    }
 
 	    private void ShowAllPermissions()

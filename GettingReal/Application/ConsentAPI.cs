@@ -6,7 +6,7 @@ namespace Application
 {
     public static class ConsentAPI
     {
-        public static List<object[]> SaveConsent(int userID, int permissionID, DateTime expirationTime)
+        public static void SaveConsent(int userID, int permissionID, DateTime expirationTime)
         {
             Dictionary<string, object> parameterInput = new Dictionary<string, object>();
 
@@ -14,7 +14,7 @@ namespace Application
             parameterInput.Add("PermissionID", permissionID);
             parameterInput.Add("ExpirationTime", expirationTime);
 
-            return ConsentDatabaseController.RetrieveQuery("SaveConsent", parameterInput);
+            ConsentDatabaseController.ExecuteNonQuery("SaveConsent", parameterInput);
         }
 
 	    public static List<object[]> RetrieveAllConsents(int userID)
@@ -35,5 +35,21 @@ namespace Application
 
 		    ConsentDatabaseController.ExecuteNonQuery("RevokeConsent", parameterInput);
 	    }
+
+		public static List<object[]> RetrieveRequestResponses(int userID)
+		{
+			List<object[]> table = new List<object[]>();
+
+			string path = @"c:\GettingReal\Customers\" + userID;
+			string[] allFileData = FileHandler.RetrieveAllFilesInFolder(path);
+			
+			for(int i = 0; i < allFileData.Length; i++)
+			{
+				string[] fileValues = allFileData[i].Split(';');
+				table.Add(fileValues);
+			}
+
+			return table;
+		}
 	}
 }
