@@ -104,6 +104,10 @@ namespace UI
 			{
 				PermissionAPI.CreatePermissionRequest(this.userID, permissionChoice, duration);
 				Console.WriteLine("Permission request has been created.");
+				DateTime dateDuration = new DateTime();
+				dateDuration = DateTime.Now;
+				dateDuration = dateDuration.AddHours(Convert.ToDouble(duration));
+				ConsentAPI.SaveConsent(Convert.ToInt32(this.userID), Convert.ToInt32(permissionChoice), dateDuration);
 			}
 		}
 

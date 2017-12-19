@@ -56,7 +56,7 @@ namespace UI
 				    ShowPendingPermissionRequests();
 				    break;
 			    case "2":
-				    ShowActiveConsent();
+				    ShowActiveConsents();
 				    break;
 			    case "3":
 				    RevokeConsent();
@@ -72,12 +72,16 @@ namespace UI
 
 	    private void RevokeConsent()
 	    {
-		    throw new NotImplementedException();
+			ShowActiveConsents();
+
+			Console.WriteLine("Enter permissionID to revoke corresponding consent");
+			string consentNr = Console.ReadLine();
+		    ConsentAPI.RevokeConsent(Convert.ToInt32(userID), Convert.ToInt32(consentNr));
 	    }
 
-	    private void ShowActiveConsent()
+	    private void ShowActiveConsents()
 	    {
-		    throw new NotImplementedException();
+			GUIHandler.PrintTable(ConsentAPI.RetrieveAllConsents(Convert.ToInt32(userID)));
 	    }
 
 	    private void ShowPendingPermissionRequests()

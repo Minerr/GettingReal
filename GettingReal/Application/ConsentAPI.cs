@@ -43,12 +43,15 @@ namespace Application
 			string path = @"c:\GettingReal\Customers\" + userID;
 			string[] allFileData = FileHandler.RetrieveAllFilesInFolder(path);
 			
-			for(int i = 0; i < allFileData.Length; i++)
+			if(allFileData != null)
 			{
-				string[] fileValues = allFileData[i].Split(';');
-				table.Add(fileValues);
+				for(int i = 0; i < allFileData.Length; i++)
+				{
+					string[] fileValues = allFileData[i].Split(';');
+					table.Add(fileValues);
+				}
 			}
-
+			
 			return table;
 		}
 

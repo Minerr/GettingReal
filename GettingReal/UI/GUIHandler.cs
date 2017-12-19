@@ -10,7 +10,7 @@ namespace UI
 	{
 		public static void PrintTable(List<object[]> table)
 		{
-			if(table.Count <= 0)
+			if(table == null || table.Count <= 0)
 			{
 				return;
 			}

@@ -46,7 +46,7 @@ namespace GettingReal
 		{
 			string[] fileData = null;
 
-			try
+			if(Directory.Exists(path))
 			{
 				string[] filePaths = Directory.GetFiles(path);
 
@@ -56,10 +56,6 @@ namespace GettingReal
 				{
 					fileData[i] = File.ReadAllText(filePaths[i]);
 				}
-			}
-			catch(Exception e)
-			{
-				Console.WriteLine("Could not create file!", e.ToString());
 			}
 
 			return fileData;
