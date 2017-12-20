@@ -59,6 +59,7 @@ namespace UI
 					}
 				}
 
+				Console.WriteLine(" ");
 				Console.WriteLine(printableRow);
 			}
 		}
