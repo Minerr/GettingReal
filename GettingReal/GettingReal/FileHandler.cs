@@ -15,9 +15,8 @@ namespace GettingReal
 			try
 			{
 				DirectoryInfo di = Directory.CreateDirectory(path); // Create folder if it does not exists.
-
 				path += "\\" + fileName + ".txt"; // Set name and datatype for the file.
-
+				
 				File.WriteAllText(path, fileData); //Create the file using the path and content.
 			}
 			catch(Exception e)

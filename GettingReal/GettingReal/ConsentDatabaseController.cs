@@ -62,7 +62,6 @@ namespace GettingReal
 					Console.WriteLine("ERROR! " + e.Message);
 				}
 			}
-
 			return null;
 		}
 
@@ -92,7 +91,6 @@ namespace GettingReal
 					Console.WriteLine("ERROR! " + e.Message);
 				}
 			}
-
 			return false;
 		}
 
@@ -121,7 +119,6 @@ namespace GettingReal
 					table.Add(row);
 				}
 			}
-
 			return table;
 		}
 	}
