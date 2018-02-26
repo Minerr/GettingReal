@@ -16,8 +16,10 @@ namespace GettingReal
 			"User Id=USER_B14; " +
 			"Password=SesamLukOp_14;";
 
-		public static void ExecuteNonQuery(string storedProcedure, Dictionary<string, object> parameterInput)
+		public static string ExecuteNonQuery(string storedProcedure, Dictionary<string, object> parameterInput)
 		{
+			string error = "";
+
 			using(SqlConnection con = new SqlConnection(connectionString))
 			{
 				try
@@ -35,12 +37,17 @@ namespace GettingReal
 				}
 				catch(SqlException e)
 				{
-					Console.WriteLine("ERROR! " + e.Message);
+					error = "ERROR! " + e.Message;
 				}
 			}
+
+			return error;
 		}
-		public static List<object[]> RetrieveQuery(string storedProcedure, Dictionary<string, object> parameterInput)
+		public static string RetrieveQuery(string storedProcedure, Dictionary<string, object> parameterInput, out List<object[]> table)
 		{
+			string error = "";
+			table = null;
+
 			using(SqlConnection con = new SqlConnection(connectionString))
 			{
 				try
@@ -55,14 +62,15 @@ namespace GettingReal
 					}
 
 					SqlDataReader reader = command.ExecuteReader();
-					return ConvertSqlDataToList(reader);
+					table = ConvertSqlDataToList(reader);
 				}
 				catch(SqlException e)
 				{
-					Console.WriteLine("ERROR! " + e.Message);
+					error = "ERROR! " + e.Message;
 				}
 			}
-			return null;
+
+			return error;
 		}
 
 		public static bool CheckQuery(string storedProcedure, Dictionary<string, object> parameterInput)
