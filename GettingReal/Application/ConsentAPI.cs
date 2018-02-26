@@ -6,7 +6,7 @@ namespace Application
 {
     public static class ConsentAPI
     {
-        public static void SaveConsent(int userID, int permissionID, DateTime expirationTime)
+        public static string SaveConsent(int userID, int permissionID, DateTime expirationTime)
         {
             Dictionary<string, object> parameterInput = new Dictionary<string, object>();
 
@@ -14,19 +14,15 @@ namespace Application
             parameterInput.Add("PermissionID", permissionID);
             parameterInput.Add("ExpirationTime", expirationTime);
 
-            ConsentDatabaseController.ExecuteNonQuery("SaveConsent", parameterInput);
+            return ConsentDatabaseController.ExecuteNonQuery("SaveConsent", parameterInput);
         }
 
-	    public static List<object[]> RetrieveAllConsents(int userID)
+	    public static string RetrieveAllConsents(int userID)
 	    {
-		    Dictionary<string, object> parameterInput = new Dictionary<string, object>();
-
-		    parameterInput.Add("UserID", userID);
-
-		    return ConsentDatabaseController.RetrieveQuery("RetrieveAllConsents", parameterInput);
+			return DomainController.Instance.RetrieveAllConsents(userID);		
 	    }
 
-	    public static void RevokeConsent(int userID, int permissionID)
+		public static void RevokeConsent(int userID, int permissionID)
 	    {
 		    Dictionary<string, object> parameterInput = new Dictionary<string, object>();
 
