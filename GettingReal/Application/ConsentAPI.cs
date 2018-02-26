@@ -65,5 +65,4 @@ namespace Application
 			return ConsentDatabaseController.CheckQuery("CheckConsent", parameterInput);
 		}
 	}
-
 }
