@@ -38,5 +38,8 @@
                 VerticalAlignment="Top" 
                 Width="341" 
                 Click="RevokeConsent"/>
+        <Label Content="{Binding UserID}" FontSize="24" HorizontalAlignment="Left" Margin="547,100,0,0" VerticalAlignment="Top" Height="45" Width="126"/>
+        <Label Content="{Binding Permission.PermissionID}" FontSize="24" HorizontalAlignment="Left" Margin="547,318,0,0" VerticalAlignment="Top" Height="45" Width="126"/>
+        <Label Content="{Binding PermissionDuration}" FontSize="24" HorizontalAlignment="Left" Margin="547,368,0,0" VerticalAlignment="Top" Height="45" Width="126"/>
     </Grid>
 </Window>

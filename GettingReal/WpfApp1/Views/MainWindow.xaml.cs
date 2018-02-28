@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Application;
+using WpfApp1.ViewModel;
 
 namespace WpfApp1.Views
 {
@@ -28,12 +28,15 @@ namespace WpfApp1.Views
 
 		private void ButtonClickSupport(object sender, RoutedEventArgs e)
 		{
-			LoginWindow loginWindow = new LoginWindow();
+			SupportMenuViewModel supportVM = new SupportMenuViewModel();
+			LoginWindow loginWindow = new LoginWindow(supportVM);
 			loginWindow.Show();
 		}
+
 		private void ButtonClickCustomer(object sender, RoutedEventArgs e)
 		{
-			LoginWindow loginWindow = new LoginWindow();
+			UserMenuViewModel userVM = new UserMenuViewModel();
+			LoginWindow loginWindow = new LoginWindow(userVM);
 			loginWindow.Show();
 		}
 	}

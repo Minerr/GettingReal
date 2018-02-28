@@ -101,7 +101,7 @@ namespace Domain
 				}
 			}
 
-			return DomainSharedMethods.ConvertTableToString(table);
+			return DomainSharedMethods.ConvertTableToStringFormat(table);
 		}
 
 	}

@@ -1,0 +1,36 @@
+﻿<Window x:Class="WpfApp1.Views.SelectPermissionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1.Views"
+        mc:Ignorable="d"
+        Title="SelectPermissionWindow" Height="600" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="479*"/>
+            <RowDefinition Height="90*"/>
+        </Grid.RowDefinitions>
+        <ListView ItemsSource="{Binding PermissionList}" SelectedItem="{Binding Path=Permission}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="PermissionID" DisplayMemberBinding="{Binding PermissionID}"/>
+                    <GridViewColumn Header="Legal Text" DisplayMemberBinding="{Binding LegalText}"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <!--<ListBox Grid.Row="0" ItemsSource="{Binding PermissionList}" SelectedItem="{Binding Path=Permission}" Margin="0,0,0,6">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <TextBlock Grid.Column="0" Text="{Binding PermissionID}" />
+                        <TextBlock Grid.Column="1" Text="{Binding LegalText}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>-->
+        <Button Content="OK" HorizontalAlignment="Left" FontSize="24" Margin="640,19,0,0" VerticalAlignment="Top" Width="98" Height="50" Click="btnSelectPermission_Click" Grid.Row="1"/>
+        <Label Content="Varighed i timer:" FontSize="24" HorizontalAlignment="Left" Margin="357,19,0,0" VerticalAlignment="Top" Height="50" Width="193" Grid.Row="1"/>
+        <TextBox HorizontalAlignment="Left" FontSize="24" Height="50" TextAlignment="Center" Margin="555,19,0,0" TextWrapping="NoWrap" Text="{Binding PermissionDuration}" VerticalAlignment="Top" Width="80" Grid.Row="1"/>
+    </Grid>
+</Window>

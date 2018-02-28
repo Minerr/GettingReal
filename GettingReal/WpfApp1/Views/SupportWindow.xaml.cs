@@ -21,14 +21,20 @@ namespace WpfApp1.Views
     /// </summary>
     public partial class SupportWindow : Window
     {
-        public SupportWindow()
+		private SupportMenuViewModel _supportVM;
+
+
+		public SupportWindow(SupportMenuViewModel supportVM)
         {
-            InitializeComponent();
+			_supportVM = supportVM;
+			InitializeComponent();
+			DataContext = supportVM;
         }
 
 		private void CreatePermissionRequest(object sender, RoutedEventArgs e)
 		{
-			
+			SelectPermissionWindow selectPermissionWindow = new SelectPermissionWindow(_supportVM);
+			selectPermissionWindow.Show();
 		}
 
 		private void RetrieveAllConsents(object sender, RoutedEventArgs e)

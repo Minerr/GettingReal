@@ -7,3 +7,6 @@
          
     </Application.Resources>
 </Application>
+    
+<!--StartupUri="Views/MainWindow.xaml">-->
+<!--StartupUri="Views/SelectPermissionWindow.xaml">-->

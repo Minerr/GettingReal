@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.ViewModel;
 
 namespace WpfApp1.Views
 {
@@ -19,14 +20,23 @@ namespace WpfApp1.Views
     /// </summary>
     public partial class LoginWindow : Window
     {
-        public LoginWindow()
+		private SupportMenuViewModel _viewModel;
+
+        public LoginWindow(object viewModel)
         {
-            InitializeComponent();
+			_viewModel = viewModel as SupportMenuViewModel;
+
+			InitializeComponent();
+			DataContext = viewModel;
         }
 
 		private void UserIdEnter_Click(object sender, RoutedEventArgs e)
 		{
-
+			SupportWindow supportWindow = new SupportWindow(_viewModel);
+			App.Current.MainWindow.Close();
+			App.Current.MainWindow = supportWindow;
+			this.Close();
+			supportWindow.Show();
 		}
 	}
 }

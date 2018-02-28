@@ -15,7 +15,7 @@ namespace Domain
 		{
 			if(table != null)
 			{
-				return ConvertTableToString(table);
+				return ConvertTableToStringFormat(table);
 			}
 
 			return errorMessage;
@@ -80,15 +80,25 @@ namespace Domain
 			string printableTable = "";
 			int numberOfColumns = table[0].Length;
 
-			foreach(object[] row in table)
+			for(int indexRow = 0; indexRow < table.Count; indexRow++)
 			{
+				object[] row = table[indexRow];
+
 				for(int i = 0; i < numberOfColumns; i++)
 				{
 					string columnValue = Convert.ToString(row[i]);
-					printableTable += columnValue + ";";
+					printableTable += columnValue;
+
+					if(i < numberOfColumns - 1)
+					{
+						printableTable += "|t|";
+					}
 				}
 
-				printableTable += "\n";
+				if(indexRow < table.Count - 1)
+				{
+					printableTable += "|n|";
+				}
 			}
 
 			return printableTable;

@@ -9,7 +9,7 @@
         Width="300">
     <Grid>
         <Label Content="Enter User ID" HorizontalAlignment="Left" Margin="31,45,0,0" VerticalAlignment="Top" Width="83"/>
-        <TextBox x:Name="InsertUserId" HorizontalAlignment="Left" Height="30" Margin="31,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
+        <TextBox x:Name="InsertUserId" Text="{Binding UserID}"  HorizontalAlignment="Left" Height="30" Margin="31,76,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186"/>
         <Button x:Name="UserIdEnter" Content="OK" HorizontalAlignment="Left" Margin="222,76,0,0" Click="UserIdEnter_Click" VerticalAlignment="Top" Width="36" Height="30"/>
 
 
