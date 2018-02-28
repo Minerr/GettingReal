@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "GettingReal\Domain.csproj", "{596523AF-DDB2-4D27-807A-44EF5B7427E4}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UI", "UI\UI.csproj", "{2CDE08F0-3670-4D32-A997-255C802BAAA6}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{F6B0CFDE-99FB-4C5C-AEEE-ED349DD99FC8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{B7EAC711-8090-4233-93FE-B50F8B1E6C15}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{F6B0CFDE-99FB-4C5C-AEEE-ED349DD99FC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F6B0CFDE-99FB-4C5C-AEEE-ED349DD99FC8}.Release|Any CPU.ActiveCfg = Debug|Any CPU
 		{F6B0CFDE-99FB-4C5C-AEEE-ED349DD99FC8}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{B7EAC711-8090-4233-93FE-B50F8B1E6C15}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B7EAC711-8090-4233-93FE-B50F8B1E6C15}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B7EAC711-8090-4233-93FE-B50F8B1E6C15}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B7EAC711-8090-4233-93FE-B50F8B1E6C15}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
