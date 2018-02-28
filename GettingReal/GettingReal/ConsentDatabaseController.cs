@@ -73,8 +73,11 @@ namespace GettingReal
 			return error;
 		}
 
-		public static bool CheckQuery(string storedProcedure, Dictionary<string, object> parameterInput)
+		public static string CheckQuery(string storedProcedure, Dictionary<string, object> parameterInput, out bool result)
 		{
+			string error = "";
+			result = false;
+
 			using(SqlConnection con = new SqlConnection(connectionString))
 			{
 				try
@@ -91,15 +94,16 @@ namespace GettingReal
 					SqlDataReader reader = command.ExecuteReader();
 					if(reader.HasRows)
 					{
-						return true;
+						result = true;
 					}
 				}
 				catch(SqlException e)
 				{
-					Console.WriteLine("ERROR! " + e.Message);
+					error = "ERROR! " + e.Message;
 				}
 			}
-			return false;
+
+			return error;
 		}
 
 

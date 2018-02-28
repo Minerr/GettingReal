@@ -12,13 +12,24 @@ namespace Application
 			return DomainController.Instance.RetrieveAllPermissions();
 		}
 
-		public static void CreatePermissionRequest(string userID, string permissionID, string duration)
+		public static string CreatePermissionRequest(string userID, string permissionID, string duration)
 		{
+			string result = "Permission request has been created.";
+
 			string path = @"c:\GettingReal\Customers\" + userID;
 			string fileData = permissionID + ";" + duration;
 			string fileName = "request" + permissionID;
 
-			FileHandler.SaveFile(path, fileData, fileName);
+			try
+			{
+				FileHandler.SaveFile(path, fileData, fileName);
+			}
+			catch(Exception e)
+			{
+				result = "ERROR! " + e.Message;
+			}
+
+			return result;
 		}
 	}
 }

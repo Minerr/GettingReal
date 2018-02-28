@@ -59,6 +59,31 @@ namespace GettingReal
 			return ConvertTableToString(table);
 		}
 
+		public string CheckForConsent(int userID, int permissionID)
+		{
+			Dictionary<string, object> parameterInput = new Dictionary<string, object>();
+
+			parameterInput.Add("UserID", userID);
+			parameterInput.Add("PermissionID", permissionID);
+
+			bool result = false;
+			string errorMessage = ConsentDatabaseController.CheckQuery("CheckConsent", parameterInput, out result);
+
+			if(errorMessage != "")
+			{
+				if(result)
+				{
+					return "1";
+				}
+				else
+				{
+					return "0";
+				}
+			}
+
+			return errorMessage;
+		}
+
 		public string RetrieveAllPermissions()
 		{
 			List<object[]> table;

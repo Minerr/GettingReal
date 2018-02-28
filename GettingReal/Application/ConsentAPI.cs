@@ -26,14 +26,9 @@ namespace Application
 			return DomainController.Instance.RetrieveRequestResponse(userID);
 		}
 
-		public static bool CheckForConsent(int userID, int permissionID)
+		public static string CheckForConsent(int userID, int permissionID)
 		{
-			Dictionary<string, object> parameterInput = new Dictionary<string, object>();
-
-			parameterInput.Add("UserID", userID);
-			parameterInput.Add("PermissionID", permissionID);
-
-			return ConsentDatabaseController.CheckQuery("CheckConsent", parameterInput);
+			return DomainController.Instance.CheckForConsent(userID, permissionID);
 		}
 	}
 
