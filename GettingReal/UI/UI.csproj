@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerMenu.cs" />
-    <Compile Include="GUIHandler.cs" />
     <Compile Include="IMenu.cs" />
     <Compile Include="MainMenu.cs" />
     <Compile Include="MenuHandler.cs" />
