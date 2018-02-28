@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 
-namespace GettingReal
+namespace Domain
 {
 	public static class ConsentDatabaseController
 	{
