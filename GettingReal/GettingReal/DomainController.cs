@@ -75,5 +75,24 @@ namespace GettingReal
 			return printableTable;
 		}
 
+		internal static string ConvertTableToStringFormat(List<object[]> table)
+		{
+			string printableTable = "";
+			int numberOfColumns = table[0].Length;
+
+			foreach(object[] row in table)
+			{
+				for(int i = 0; i < numberOfColumns; i++)
+				{
+					string columnValue = Convert.ToString(row[i]);
+					printableTable += columnValue + ";";
+				}
+
+				printableTable += "\n";
+			}
+
+			return printableTable;
+		}
+
 	}
 }
