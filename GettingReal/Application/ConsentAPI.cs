@@ -8,27 +8,27 @@ namespace Application
     {
         public static string SaveConsent(int userID, int permissionID, DateTime expirationTime)
         {
-			return DomainController.Instance.SaveConsent(userID, permissionID, expirationTime);
+			return ConsentDomainController.Instance.SaveConsent(userID, permissionID, expirationTime);
 		}
 
 	    public static string RetrieveAllConsents(int userID)
 	    {
-			return DomainController.Instance.RetrieveAllConsents(userID);		
+			return ConsentDomainController.Instance.RetrieveAllConsents(userID);		
 	    }
 
 		public static string RevokeConsent(int userID, int permissionID)
 	    {
-			return DomainController.Instance.RevokeConsent(userID, permissionID);
+			return ConsentDomainController.Instance.RevokeConsent(userID, permissionID);
 	    }
 
 		public static string RetrieveRequestResponses(int userID)
 		{
-			return DomainController.Instance.RetrieveRequestResponse(userID);
+			return ConsentDomainController.Instance.RetrieveRequestResponse(userID);
 		}
 
 		public static string CheckForConsent(int userID, int permissionID)
 		{
-			return DomainController.Instance.CheckForConsent(userID, permissionID);
+			return ConsentDomainController.Instance.CheckForConsent(userID, permissionID);
 		}
 	}
 

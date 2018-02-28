@@ -9,7 +9,7 @@ namespace Application
     {
 		public static string RetrieveAllPermissions()
 		{
-			return DomainController.Instance.RetrieveAllPermissions();
+			return PermissionDomainController.Instance.RetrieveAllPermissions();
 		}
 
 		public static string CreatePermissionRequest(string userID, string permissionID, string duration)

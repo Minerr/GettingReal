@@ -6,117 +6,12 @@ using System.Threading.Tasks;
 
 namespace GettingReal
 {
-	public class DomainController
+	public static class DomainSharedMethods
 	{
 
-		//Singleton
-		private static DomainController instance;
-		public static DomainController Instance
-		{
-			get
-			{
-				if(instance == null)
-				{
-					instance = new DomainController();
-				}
+		//----- internal methods ---------
 
-				return instance;
-			}
-		}
-
-		private DomainController()
-		{
-
-		}
-
-		public string SaveConsent(int userID, int permissionID, DateTime expirationTime)
-		{
-			Dictionary<string, object> parameterInput = new Dictionary<string, object>();
-
-			parameterInput.Add("UserID", userID);
-			parameterInput.Add("PermissionID", permissionID);
-			parameterInput.Add("ExpirationTime", expirationTime);
-
-			return ConsentDatabaseController.ExecuteNonQuery("SaveConsent", parameterInput);
-		}
-
-		public string RetrieveRequestResponse(int userID)
-		{
-			List<object[]> table = new List<object[]>();
-
-			string path = @"c:\GettingReal\Customers\" + userID;
-			string[] allFileData = FileHandler.RetrieveAllFilesInFolder(path);
-
-			if(allFileData != null)
-			{
-				for(int i = 0; i < allFileData.Length; i++)
-				{
-					string[] fileValues = allFileData[i].Split(';');
-					table.Add(fileValues);
-				}
-			}
-
-			return ConvertTableToString(table);
-		}
-
-		public string CheckForConsent(int userID, int permissionID)
-		{
-			Dictionary<string, object> parameterInput = new Dictionary<string, object>();
-
-			parameterInput.Add("UserID", userID);
-			parameterInput.Add("PermissionID", permissionID);
-
-			bool result = false;
-			string errorMessage = ConsentDatabaseController.CheckQuery("CheckConsent", parameterInput, out result);
-
-			if(errorMessage != "")
-			{
-				if(result)
-				{
-					return "1";
-				}
-				else
-				{
-					return "0";
-				}
-			}
-
-			return errorMessage;
-		}
-
-		public string RetrieveAllPermissions()
-		{
-			List<object[]> table;
-			string errorMessage = ConsentDatabaseController.RetrieveQuery("RetrieveAllPermissions", new Dictionary<string, object>(), out table);
-
-			return GetTableOrError(errorMessage, table);
-		}
-
-		public string RetrieveAllConsents(int userID)
-		{
-			Dictionary<string, object> parameterInput = new Dictionary<string, object>();
-			parameterInput.Add("UserID", userID);
-
-			List<object[]> table;
-			string errorMessage = ConsentDatabaseController.RetrieveQuery("RetrieveAllConsents", parameterInput, out table);
-
-			return GetTableOrError(errorMessage, table);
-		}
-
-		public string RevokeConsent(int userID, int permissionID)
-		{
-			Dictionary<string, object> parameterInput = new Dictionary<string, object>();
-
-			parameterInput.Add("UserID", userID);
-			parameterInput.Add("PermissionID", permissionID);
-
-			return ConsentDatabaseController.ExecuteNonQuery("RevokeConsent", parameterInput);
-		}
-
-
-		//----- private methods ---------
-
-		private string GetTableOrError(string errorMessage, List<object[]> table)
+		internal static string GetTableOrError(string errorMessage, List<object[]> table)
 		{
 			if(table != null)
 			{
@@ -126,7 +21,7 @@ namespace GettingReal
 			return errorMessage;
 		}
 
-		private static string ConvertTableToString(List<object[]> table)
+		internal static string ConvertTableToString(List<object[]> table)
 		{
 			string printableTable = "";
 
@@ -175,6 +70,25 @@ namespace GettingReal
 				}
 				
 				printableTable += " \n" + printableRow;
+			}
+
+			return printableTable;
+		}
+
+		internal static string ConvertTableToStringFormat(List<object[]> table)
+		{
+			string printableTable = "";
+			int numberOfColumns = table[0].Length;
+
+			foreach(object[] row in table)
+			{
+				for(int i = 0; i < numberOfColumns; i++)
+				{
+					string columnValue = Convert.ToString(row[i]);
+					printableTable += columnValue + ";";
+				}
+
+				printableTable += "\n";
 			}
 
 			return printableTable;

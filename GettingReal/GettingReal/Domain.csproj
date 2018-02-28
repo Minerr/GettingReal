@@ -43,8 +43,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConsentDatabaseController.cs" />
+    <Compile Include="ConsentDomainController.cs" />
     <Compile Include="DomainController.cs" />
     <Compile Include="FileHandler.cs" />
+    <Compile Include="PermissionDomainController.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
