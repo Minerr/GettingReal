@@ -60,6 +60,8 @@
     <Compile Include="SupportWindow.xaml.cs">
       <DependentUpon>SupportWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\SupportMenuViewModel.cs" />
+    <Compile Include="ViewModel\UserMenuViewModel.cs" />
     <Page Include="LoginWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -112,6 +114,9 @@
       <Project>{f6b0cfde-99fb-4c5c-aeee-ed349dd99fc8}</Project>
       <Name>Application</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="View\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
