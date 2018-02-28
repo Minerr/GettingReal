@@ -28,11 +28,13 @@ namespace WpfApp1
 
 		private void ButtonClickSupport(object sender, RoutedEventArgs e)
 		{
-			MenuHandler.ChangeCurrentMenu(MenuHandler.MenuType.SupportMenu);
+			LoginWindow loginWindow = new LoginWindow();
+			loginWindow.Show();
 		}
 		private void ButtonClickCustomer(object sender, RoutedEventArgs e)
 		{
-			MenuHandler.ChangeCurrentMenu(MenuHandler.MenuType.CustomerMenu);
+			LoginWindow loginWindow = new LoginWindow();
+			loginWindow.Show();
 		}
 	}
 }

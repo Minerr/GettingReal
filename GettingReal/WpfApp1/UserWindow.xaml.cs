@@ -1,5 +1,4 @@
-﻿using Application;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,30 +11,26 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Application;
 
 namespace WpfApp1
 {
     /// <summary>
-    /// Interaction logic for SupportWindow.xaml
+    /// Interaction logic for UserWindow.xaml
     /// </summary>
-    public partial class SupportWindow : Window
+    public partial class UserWindow : Window
     {
-        public SupportWindow()
+        public UserWindow()
         {
             InitializeComponent();
         }
 
-		private void CreatePermissionRequest(object sender, RoutedEventArgs e)
-		{
-			
-		}
-
-		private void RetrieveAllConsents(object sender, RoutedEventArgs e)
+		private void CheckForConsent(object sender, RoutedEventArgs e)
 		{
 
 		}
 
-		private void RetrieveRequestResponses(object sender, RoutedEventArgs e)
+		private void ShowAllConsents(object sender, RoutedEventArgs e)
 		{
 
 		}
@@ -44,5 +39,7 @@ namespace WpfApp1
 		{
 
 		}
+
+
 	}
 }
