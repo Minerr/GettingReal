@@ -11,27 +11,35 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Application;
 
-namespace WpfApp1
+namespace WpfApp1.Views
 {
     /// <summary>
-    /// Interaction logic for LoginWindow.xaml
+    /// Interaction logic for UserWindow.xaml
     /// </summary>
-    public partial class LoginWindow : Window
+    public partial class UserWindow : Window
     {
-        public LoginWindow()
+        public UserWindow()
         {
             InitializeComponent();
         }
 
-		private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+		private void CheckForConsent(object sender, RoutedEventArgs e)
 		{
 
 		}
 
-		private void UserIdEnter_Click(object sender, RoutedEventArgs e)
+		private void ShowAllConsents(object sender, RoutedEventArgs e)
 		{
 
 		}
+
+		private void RevokeConsent(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+
 	}
 }

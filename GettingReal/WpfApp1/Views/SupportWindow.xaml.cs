@@ -12,8 +12,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfApp1.ViewModel;
 
-namespace WpfApp1
+namespace WpfApp1.Views
 {
     /// <summary>
     /// Interaction logic for SupportWindow.xaml

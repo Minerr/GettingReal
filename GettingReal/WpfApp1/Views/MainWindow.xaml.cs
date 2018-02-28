@@ -14,7 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Application;
 
-namespace WpfApp1
+namespace WpfApp1.Views
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
