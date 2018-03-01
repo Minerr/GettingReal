@@ -15,29 +15,13 @@
                 Width="341" 
                 Click="CreatePermissionRequest"/>
 
-        <Button Content="Show Request Response" 
-                FontSize="24"
-                HorizontalAlignment="Left" 
-                Margin="60,200,0,0" 
-                VerticalAlignment="Top" 
-                Width="341"
-                Click="RevokeConsent"/>
-
         <Button Content="Show All Consents" 
                 FontSize="24"
                 HorizontalAlignment="Left" 
-                Margin="60,300,0,0" 
+                Margin="60,176,0,0" 
                 VerticalAlignment="Top" 
                 Width="341"
                 Click="RetrieveAllConsents"/>
-
-        <Button Content="Revoke Consent" 
-                FontSize="24"
-                HorizontalAlignment="Left" 
-                Margin="60,400,0,0" 
-                VerticalAlignment="Top" 
-                Width="341" 
-                Click="RevokeConsent"/>
         <Label Content="{Binding UserID}" FontSize="24" HorizontalAlignment="Left" Margin="547,100,0,0" VerticalAlignment="Top" Height="45" Width="126"/>
         <Label Content="{Binding Permission.PermissionID}" FontSize="24" HorizontalAlignment="Left" Margin="547,318,0,0" VerticalAlignment="Top" Height="45" Width="126"/>
         <Label Content="{Binding PermissionDuration}" FontSize="24" HorizontalAlignment="Left" Margin="547,368,0,0" VerticalAlignment="Top" Height="45" Width="126"/>

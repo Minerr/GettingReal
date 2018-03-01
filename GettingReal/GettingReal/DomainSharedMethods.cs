@@ -78,26 +78,30 @@ namespace Domain
 		internal static string ConvertTableToStringFormat(List<object[]> table)
 		{
 			string printableTable = "";
-			int numberOfColumns = table[0].Length;
 
-			for(int indexRow = 0; indexRow < table.Count; indexRow++)
+			if(table != null)
 			{
-				object[] row = table[indexRow];
+				int numberOfColumns = table[0].Length;
 
-				for(int i = 0; i < numberOfColumns; i++)
+				for(int indexRow = 0; indexRow < table.Count; indexRow++)
 				{
-					string columnValue = Convert.ToString(row[i]);
-					printableTable += columnValue;
+					object[] row = table[indexRow];
 
-					if(i < numberOfColumns - 1)
+					for(int i = 0; i < numberOfColumns; i++)
 					{
-						printableTable += "|t|";
-					}
-				}
+						string columnValue = Convert.ToString(row[i]);
+						printableTable += columnValue;
 
-				if(indexRow < table.Count - 1)
-				{
-					printableTable += "|n|";
+						if(i < numberOfColumns - 1)
+						{
+							printableTable += "|t|";
+						}
+					}
+
+					if(indexRow < table.Count - 1)
+					{
+						printableTable += "|n|";
+					}
 				}
 			}
 

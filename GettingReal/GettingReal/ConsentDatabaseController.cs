@@ -109,10 +109,12 @@ namespace Domain
 
 		private static List<object[]> ConvertSqlDataToList(SqlDataReader reader)
 		{
-			List<object[]> table = new List<object[]>();
+			List<object[]> table = null;
 
 			if(reader.HasRows)
 			{
+				table = new List<object[]>();
+
 				int numberOfColumns = reader.FieldCount;
 
 				// Insert column names into the table.

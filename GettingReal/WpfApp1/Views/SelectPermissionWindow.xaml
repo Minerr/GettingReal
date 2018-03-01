@@ -11,7 +11,7 @@
             <RowDefinition Height="479*"/>
             <RowDefinition Height="90*"/>
         </Grid.RowDefinitions>
-        <ListView ItemsSource="{Binding PermissionList}" SelectedItem="{Binding Permission}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+        <ListView ItemsSource="{Binding PermissionList}" SelectedItem="{Binding SelectedPermission}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="PermissionID" DisplayMemberBinding="{Binding PermissionID}"/>

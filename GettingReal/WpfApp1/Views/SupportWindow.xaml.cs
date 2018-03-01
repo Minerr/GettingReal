@@ -39,17 +39,8 @@ namespace WpfApp1.Views
 
 		private void RetrieveAllConsents(object sender, RoutedEventArgs e)
 		{
-
-		}
-
-		private void RetrieveRequestResponses(object sender, RoutedEventArgs e)
-		{
-
-		}
-
-		private void RevokeConsent(object sender, RoutedEventArgs e)
-		{
-
+			SelectConsentWindow selectConsentWindow = new SelectConsentWindow(_supportVM);
+			selectConsentWindow.Show();
 		}
 	}
 }

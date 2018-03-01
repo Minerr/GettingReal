@@ -61,6 +61,10 @@ namespace WpfApp1.Views
 
 		private void btnSelectPermission_Click(object sender, RoutedEventArgs e)
 		{
+			DateTime expirationTime = new DateTime();
+			expirationTime = DateTime.Now;
+			expirationTime = expirationTime.AddHours(Convert.ToDouble(_viewModel.PermissionDuration));
+			ConsentAPI.SaveConsent(_viewModel.UserID, _viewModel.SelectedPermission.PermissionID, expirationTime);
 			_viewModel.ClearPermissionList();
 			this.Close();
 		}
