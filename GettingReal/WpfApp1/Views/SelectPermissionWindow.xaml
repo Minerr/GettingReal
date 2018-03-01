@@ -11,24 +11,20 @@
             <RowDefinition Height="479*"/>
             <RowDefinition Height="90*"/>
         </Grid.RowDefinitions>
-        <ListView ItemsSource="{Binding PermissionList}" SelectedItem="{Binding Path=Permission}">
+        <ListView ItemsSource="{Binding PermissionList}" SelectedItem="{Binding Permission}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="PermissionID" DisplayMemberBinding="{Binding PermissionID}"/>
-                    <GridViewColumn Header="Legal Text" DisplayMemberBinding="{Binding LegalText}"/>
+                    <GridViewColumn Header="Legal Text" Width="700">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock TextWrapping="Wrap" Text="{Binding LegalText}" HorizontalAlignment="Stretch"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
                 </GridView>
             </ListView.View>
         </ListView>
-        <!--<ListBox Grid.Row="0" ItemsSource="{Binding PermissionList}" SelectedItem="{Binding Path=Permission}" Margin="0,0,0,6">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <TextBlock Grid.Column="0" Text="{Binding PermissionID}" />
-                        <TextBlock Grid.Column="1" Text="{Binding LegalText}"/>
-                    </Grid>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>-->
         <Button Content="OK" HorizontalAlignment="Left" FontSize="24" Margin="640,19,0,0" VerticalAlignment="Top" Width="98" Height="50" Click="btnSelectPermission_Click" Grid.Row="1"/>
         <Label Content="Varighed i timer:" FontSize="24" HorizontalAlignment="Left" Margin="357,19,0,0" VerticalAlignment="Top" Height="50" Width="193" Grid.Row="1"/>
         <TextBox HorizontalAlignment="Left" FontSize="24" Height="50" TextAlignment="Center" Margin="555,19,0,0" TextWrapping="NoWrap" Text="{Binding PermissionDuration}" VerticalAlignment="Top" Width="80" Grid.Row="1"/>

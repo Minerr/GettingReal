@@ -26,5 +26,10 @@ namespace WpfApp1.ViewModel
 			PermissionList.Add(new Permission(permissionID, legalText));
 		}
 
+		public void ClearPermissionList()
+		{
+			PermissionList.Clear();
+		}
+
 	}
 }

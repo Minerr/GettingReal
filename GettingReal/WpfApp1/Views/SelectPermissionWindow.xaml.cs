@@ -61,6 +61,7 @@ namespace WpfApp1.Views
 
 		private void btnSelectPermission_Click(object sender, RoutedEventArgs e)
 		{
+			_viewModel.ClearPermissionList();
 			this.Close();
 		}
 	}
