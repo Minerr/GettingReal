@@ -48,14 +48,14 @@ namespace WpfApp1.Views
 					string userID = columns[0];
 					string permissionID = columns[1];
 					string createdTime = columns[2];
-					string expiredTime = columns[3];
+					string expirationTime = columns[3];
 					string legalText = columns[4];
 
 					_viewModel.AddConsentToList(
 						Convert.ToInt32(userID),
 						Convert.ToInt32(permissionID),
 						Convert.ToDateTime(createdTime),
-						Convert.ToDateTime(expiredTime),
+						Convert.ToDateTime(expirationTime),
 						legalText
 						);
 				}

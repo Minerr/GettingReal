@@ -15,7 +15,7 @@
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Created Time" DisplayMemberBinding="{Binding CreatedTime}"/>
-                    <GridViewColumn Header="Expired Time" DisplayMemberBinding="{Binding ExpiredTime}"/>
+                    <GridViewColumn Header="Expiration Time" DisplayMemberBinding="{Binding ExpirationTime}"/>
                     <GridViewColumn Header="Legal Text" Width="500">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>

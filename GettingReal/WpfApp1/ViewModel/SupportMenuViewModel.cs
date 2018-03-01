@@ -38,9 +38,9 @@ namespace WpfApp1.ViewModel
 		}
 
 
-		public void AddConsentToList(int userID, int permissionID, DateTime createdTime, DateTime expiredTime, string legalText)
+		public void AddConsentToList(int userID, int permissionID, DateTime createdTime, DateTime expirationTime, string legalText)
 		{
-			ConsentList.Add(new Consent(userID, permissionID, createdTime, expiredTime, legalText));
+			ConsentList.Add(new Consent(userID, permissionID, createdTime, expirationTime, legalText));
 		}
 
 		public void ClearConsentList()
