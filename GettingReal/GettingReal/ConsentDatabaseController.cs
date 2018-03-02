@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace Domain
 {
-	public static class ConsentDatabaseController
+	internal static class ConsentDatabaseController
 	{
 		private static string connectionString =
 			"Server=EALSQL1.eal.local; " +
@@ -16,9 +16,9 @@ namespace Domain
 			"User Id=USER_B14; " +
 			"Password=SesamLukOp_14;";
 
-		public static string ExecuteNonQuery(string storedProcedure, Dictionary<string, object> parameterInput)
+		internal static string ExecuteNonQuery(string storedProcedure, Dictionary<string, object> parameterInput)
 		{
-			string error = "";
+			string errorMessage = "";
 
 			using(SqlConnection con = new SqlConnection(connectionString))
 			{
@@ -37,16 +37,17 @@ namespace Domain
 				}
 				catch(SqlException e)
 				{
-					error = "ERROR! " + e.Message;
+					errorMessage = "ERROR! " + e.Message;
 				}
 			}
 
-			return error;
+			return errorMessage;
 		}
-		public static string RetrieveQuery(string storedProcedure, Dictionary<string, object> parameterInput, out List<object[]> table)
+
+		internal static List<object[]> RetrieveQuery(string storedProcedure, Dictionary<string, object> parameterInput, out string errorMessage)
 		{
-			string error = "";
-			table = null;
+			errorMessage = "";
+			List<object[]> table = null;
 
 			using(SqlConnection con = new SqlConnection(connectionString))
 			{
@@ -66,17 +67,17 @@ namespace Domain
 				}
 				catch(SqlException e)
 				{
-					error = "ERROR! " + e.Message;
+					errorMessage = "ERROR! " + e.Message;
 				}
 			}
 
-			return error;
+			return table;
 		}
 
-		public static string CheckQuery(string storedProcedure, Dictionary<string, object> parameterInput, out bool result)
+		internal static bool CheckQuery(string storedProcedure, Dictionary<string, object> parameterInput, out string errorMessage)
 		{
-			string error = "";
-			result = false;
+			errorMessage = "";
+			bool result = false;
 
 			using(SqlConnection con = new SqlConnection(connectionString))
 			{
@@ -99,11 +100,11 @@ namespace Domain
 				}
 				catch(SqlException e)
 				{
-					error = "ERROR! " + e.Message;
+					errorMessage = "ERROR! " + e.Message;
 				}
 			}
 
-			return error;
+			return result;
 		}
 
 
@@ -136,9 +137,4 @@ namespace Domain
 			return table;
 		}
 	}
-
-
-
-
-
 }

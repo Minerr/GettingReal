@@ -14,6 +14,7 @@
         <ListView ItemsSource="{Binding ConsentList}" SelectedItem="{Binding SelectedConsent}" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.View>
                 <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding PermissionID}"/>
                     <GridViewColumn Header="Created Time" DisplayMemberBinding="{Binding CreatedTime}"/>
                     <GridViewColumn Header="Expiration Time" DisplayMemberBinding="{Binding ExpirationTime}"/>
                     <GridViewColumn Header="Legal Text" Width="500">

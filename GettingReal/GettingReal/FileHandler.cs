@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Domain
 {
-	public static class FileHandler
+	internal static class FileHandler
 	{
 
-		public static void SaveFile(string path, string fileData, string fileName)
+		internal static void SaveFile(string path, string fileData, string fileName)
 		{
 			try
 			{
@@ -25,7 +25,7 @@ namespace Domain
 			}
 		}
 
-		public static string RetrieveFile(string path, string fileName)
+		internal static string RetrieveFile(string path, string fileName)
 		{
 			string fileData = null;
 
@@ -41,7 +41,8 @@ namespace Domain
 
 			return fileData;
 		}
-		public static string[] RetrieveAllFilesInFolder(string path)
+
+		internal static string[] RetrieveAllFilesInFolder(string path)
 		{
 			string[] fileData = null;
 

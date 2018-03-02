@@ -45,13 +45,11 @@ namespace WpfApp1.Views
 
 		private void RetrieveAllPermissions()
 		{
-			string tableContent = PermissionAPI.RetrieveAllPermissions();
-			string[] table = tableContent.Split(new string[] { "|n|" }, StringSplitOptions.None);
+			string outputMessage = "";
+			List<string[]> tableContent = PermissionAPI.RetrieveAllPermissions(out outputMessage);
 
-			for(int i = 1; i < table.Length; i++)
+			foreach(string[] columns in tableContent)
 			{
-				string[] columns = table[i].Split(new string[] { "|t|" }, StringSplitOptions.None);
-				
 				string permissionID = columns[0];
 				string legalText = columns[1];
 

@@ -75,23 +75,24 @@ namespace UI
 			ShowActiveConsents();
 
 			Console.WriteLine("Enter permissionID to revoke corresponding consent");
-			string consentNr = Console.ReadLine();
-			Console.WriteLine(ConsentAPI.RevokeConsent(Convert.ToInt32(userID), Convert.ToInt32(consentNr)));
+			string permissionID = Console.ReadLine();
+			Console.WriteLine(ConsentAPI.RevokeConsent(Convert.ToInt32(userID), Convert.ToInt32(permissionID)));
 	    }
 
 	    private void ShowActiveConsents()
 	    {
-			Console.WriteLine(ConsentAPI.RetrieveAllConsents(Convert.ToInt32(userID)));
-	    }
+			string outputMessage = "";
+			List<string[]> outputList = ConsentAPI.RetrieveAllConsents(Convert.ToInt32(userID), out outputMessage);
+
+			GUIHandler.PrintTableOrMessage(outputList, outputMessage);
+		}
 
 	    private void ShowPendingPermissionRequests()
 	    {
-			Console.WriteLine(ConsentAPI.RetrieveRequestResponses(Convert.ToInt32(this.userID)));
-	    }
+			string outputMessage = "";
+			List<string[]> outputList = PermissionAPI.RetrieveRequestResponses(Convert.ToInt32(this.userID), out outputMessage);
 
-	    private void ShowAllPermissions()
-        {
-            Console.WriteLine("This is customer menu");
-        }
+			GUIHandler.PrintTableOrMessage(outputList, outputMessage);
+		}
     }
 }

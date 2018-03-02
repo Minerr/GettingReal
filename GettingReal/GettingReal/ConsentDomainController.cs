@@ -36,43 +36,46 @@ namespace Domain
 			parameterInput.Add("PermissionID", permissionID);
 			parameterInput.Add("ExpirationTime", expirationTime);
 
-			return ConsentDatabaseController.ExecuteNonQuery("SaveConsent", parameterInput);
+			string errorMessage = ConsentDatabaseController.ExecuteNonQuery("SaveConsent", parameterInput);
+
+			if(errorMessage == "")
+			{
+				return "Success! Consent was created!";
+			}
+
+			return errorMessage;
 		}
 
-		public string CheckForConsent(int userID, int permissionID)
+		public bool CheckForConsent(int userID, int permissionID, out string outputMessage)
 		{
 			Dictionary<string, object> parameterInput = new Dictionary<string, object>();
 
 			parameterInput.Add("UserID", userID);
 			parameterInput.Add("PermissionID", permissionID);
 
-			bool result = false;
-			string errorMessage = ConsentDatabaseController.CheckQuery("CheckConsent", parameterInput, out result);
+			bool result = ConsentDatabaseController.CheckQuery("CheckConsent", parameterInput, out outputMessage);
 
-			if(errorMessage != "")
+			if(outputMessage == "")
 			{
 				if(result)
 				{
-					return "1";
+					outputMessage = "User nr: " + userID + ", has given consent to the permission.";
 				}
 				else
 				{
-					return "0";
+					outputMessage = "User nr: " + userID + ", has not given consent to the permission.";
 				}
 			}
 
-			return errorMessage;
+			return result;
 		}
 
-		public string RetrieveAllConsents(int userID)
+		public List<Consent> RetrieveAllConsents(int userID, out string outputMessage)
 		{
 			Dictionary<string, object> parameterInput = new Dictionary<string, object>();
 			parameterInput.Add("UserID", userID);
 
-			List<object[]> table;
-			string errorMessage = ConsentDatabaseController.RetrieveQuery("RetrieveAllConsents", parameterInput, out table);
-
-			return DomainSharedMethods.GetTableOrError(errorMessage, table);
+			return ConvertTableToList(ConsentDatabaseController.RetrieveQuery("RetrieveAllConsents", parameterInput, out outputMessage));
 		}
 
 		public string RevokeConsent(int userID, int permissionID)
@@ -82,27 +85,26 @@ namespace Domain
 			parameterInput.Add("UserID", userID);
 			parameterInput.Add("PermissionID", permissionID);
 
-			return ConsentDatabaseController.ExecuteNonQuery("RevokeConsent", parameterInput);
-		}
+			string outputMessage = ConsentDatabaseController.ExecuteNonQuery("RevokeConsent", parameterInput);
 
-		public string RetrieveRequestResponse(int userID)
-		{
-			List<object[]> table = new List<object[]>();
-
-			string path = @"c:\GettingReal\Customers\" + userID;
-			string[] allFileData = FileHandler.RetrieveAllFilesInFolder(path);
-
-			if(allFileData != null)
+			if(outputMessage == "")
 			{
-				for(int i = 0; i < allFileData.Length; i++)
-				{
-					string[] fileValues = allFileData[i].Split(';');
-					table.Add(fileValues);
-				}
+				outputMessage = "Consent with permission ID: " + permissionID + ", has been revoked from user nr: " + userID + ".";
 			}
 
-			return DomainSharedMethods.ConvertTableToStringFormat(table);
+			return outputMessage;
 		}
 
+		private List<Consent> ConvertTableToList(List<object[]> table)
+		{
+			List<Consent> list = new List<Consent>();
+
+			foreach(object[] row in table.Skip(1))
+			{
+				list.Add(new Consent(row));
+			}
+
+			return list;
+		}
 	}
 }
