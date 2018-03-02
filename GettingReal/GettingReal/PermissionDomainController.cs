@@ -34,25 +34,25 @@ namespace Domain
 
 		public List<PermissionRequest> RetrieveRequestResponse(int userID, out string outputMessage)
 		{
-			List<string[]> table = new List<string[]>();
+			//List<string[]> table = new List<string[]>();
 
-			string path = @"c:\GettingReal\Customers\" + userID;
-			string[] allFileData = FileHandler.RetrieveAllFilesInFolder(path);
+			//string path = @"c:\GettingReal\Customers\" + userID;
+			//string[] allFileData = FileHandler.RetrieveAllFilesInFolder(path);
 
-			if(allFileData != null)
-			{
-				for(int i = 0; i < allFileData.Length; i++)
-				{
-					string[] fileValues = allFileData[i].Split(';');
-					table.Add(fileValues);
-				}
+			//if(allFileData != null)
+			//{
+			//	for(int i = 0; i < allFileData.Length; i++)
+			//	{
+			//		string[] fileValues = allFileData[i].Split(';');
+			//		table.Add(fileValues);
+			//	}
 
-				outputMessage = "Retrieving request responses was a success!";
-				return ConvertFileDataToList(table);
-			}
+			//	outputMessage = "Retrieving request responses was a success!";
+			//	return ConvertFileDataToList(table);
+			//}
 
 			outputMessage = "Failed retrieving request responses!";
-			return new List<PermissionRequest>();
+			return null;
 		}
 
 		private List<Permission> ConvertTableToList(List<object[]> table)

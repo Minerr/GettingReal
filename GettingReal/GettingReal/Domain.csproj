@@ -45,7 +45,6 @@
     <Compile Include="Consent.cs" />
     <Compile Include="ConsentDatabaseController.cs" />
     <Compile Include="ConsentDomainController.cs" />
-    <Compile Include="DomainSharedMethods.cs" />
     <Compile Include="FileHandler.cs" />
     <Compile Include="Permission.cs" />
     <Compile Include="PermissionDomainController.cs" />
