@@ -1,36 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
-using Domain;
 using System.IO;
+using Domain;
 
 namespace Application
 {
     public static class PermissionAPI
     {
-		public static string RetrieveAllPermissions()
+		public static List<string[]> RetrieveAllPermissions(out string outputMessage)
 		{
-			return PermissionDomainController.Instance.RetrieveAllPermissions();
+			return Converter.ConvertToStringArrayList(PermissionDomainController.Instance.RetrieveAllPermissions(out outputMessage));
+		}
+
+		public static List<string[]> RetrieveRequestResponses(int userID, out string outputMessage)
+		{
+			return Converter.ConvertToStringArrayList(PermissionDomainController.Instance.RetrieveRequestResponse(userID, out outputMessage));
 		}
 
 		public static string CreatePermissionRequest(string userID, string permissionID, string duration)
 		{
-			string result = "Permission request has been created.";
+			string result = "Permission request could not be created.";
 
-			string path = @"c:\GettingReal\Customers\" + userID;
-			string fileData = permissionID + ";" + duration;
-			string fileName = "request" + permissionID;
+			//string path = @"c:\GettingReal\Customers\" + userID;
+			//string fileData = permissionID + ";" + duration;
+			//string fileName = "request" + permissionID;
 
-			try
-			{
-				FileHandler.SaveFile(path, fileData, fileName);
-			}
-			catch(Exception e)
-			{
-				result = "ERROR! " + e.Message;
-			}
+			//try
+			//{
+			//	FileHandler.SaveFile(path, fileData, fileName);
+			//}
+			//catch(Exception e)
+			//{
+			//	result = "ERROR! " + e.Message;
+			//}
 
 			return result;
 		}
+
 	}
 }
 

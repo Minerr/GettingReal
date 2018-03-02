@@ -11,9 +11,9 @@ namespace Application
 			return ConsentDomainController.Instance.SaveConsent(userID, permissionID, expirationTime);
 		}
 
-	    public static string RetrieveAllConsents(int userID)
+	    public static List<string[]> RetrieveAllConsents(int userID, out string outputMessage)
 	    {
-			return ConsentDomainController.Instance.RetrieveAllConsents(userID);		
+			return Converter.ConvertToStringArrayList(ConsentDomainController.Instance.RetrieveAllConsents(userID, out outputMessage));		
 	    }
 
 		public static string RevokeConsent(int userID, int permissionID)
@@ -21,14 +21,9 @@ namespace Application
 			return ConsentDomainController.Instance.RevokeConsent(userID, permissionID);
 	    }
 
-		public static string RetrieveRequestResponses(int userID)
+		public static bool CheckForConsent(int userID, int permissionID, out string outputMessage)
 		{
-			return ConsentDomainController.Instance.RetrieveRequestResponse(userID);
-		}
-
-		public static string CheckForConsent(int userID, int permissionID)
-		{
-			return ConsentDomainController.Instance.CheckForConsent(userID, permissionID);
+			return ConsentDomainController.Instance.CheckForConsent(userID, permissionID, out outputMessage);
 		}
 	}
 

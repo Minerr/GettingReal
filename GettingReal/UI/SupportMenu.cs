@@ -84,7 +84,10 @@ namespace UI
 
 		private void ShowAllPermissions()
 		{
-			Console.WriteLine(PermissionAPI.RetrieveAllPermissions());
+			string outputMessage = "";
+			List<string[]> outputList = PermissionAPI.RetrieveAllPermissions(out outputMessage);
+
+			GUIHandler.PrintTableOrMessage(outputList, outputMessage);
 		}
 
 		private void NewPermissionRequest()
@@ -96,15 +99,18 @@ namespace UI
 			Console.WriteLine("Define duration of permission");
 			string duration = Console.ReadLine();
 
-			string s = ConsentAPI.CheckForConsent(Convert.ToInt32(this.userID), Convert.ToInt32(permissionChoice));
 
-			if(s.Equals("1"))
+			string outputMessage = "";
+			bool isConsentGiven = ConsentAPI.CheckForConsent(Convert.ToInt32(this.userID), Convert.ToInt32(permissionChoice), out outputMessage);
+
+			if(isConsentGiven)
 			{
 				Console.WriteLine("Consent for this permission has already been given for this user.");
 			}
 			else
 			{
 				Console.WriteLine(PermissionAPI.CreatePermissionRequest(this.userID, permissionChoice, duration));
+
 				DateTime dateDuration = new DateTime();
 				dateDuration = DateTime.Now;
 				dateDuration = dateDuration.AddHours(Convert.ToDouble(duration));
@@ -114,7 +120,10 @@ namespace UI
 
 		private void ShowAllConsent()
 		{
-			Console.WriteLine(ConsentAPI.RetrieveAllConsents(Convert.ToInt32(this.userID)));
+			string outputMessage = "";
+			List<string[]> outputList = ConsentAPI.RetrieveAllConsents(Convert.ToInt32(this.userID), out outputMessage);
+
+			GUIHandler.PrintTableOrMessage(outputList, outputMessage);
 		}
 
 		private void RevokeConsent()

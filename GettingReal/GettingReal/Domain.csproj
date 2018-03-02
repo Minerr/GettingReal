@@ -42,11 +42,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Consent.cs" />
     <Compile Include="ConsentDatabaseController.cs" />
     <Compile Include="ConsentDomainController.cs" />
-    <Compile Include="DomainSharedMethods.cs" />
     <Compile Include="FileHandler.cs" />
+    <Compile Include="Permission.cs" />
     <Compile Include="PermissionDomainController.cs" />
+    <Compile Include="PermissionRequest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

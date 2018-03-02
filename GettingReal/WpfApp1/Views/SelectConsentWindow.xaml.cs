@@ -35,16 +35,13 @@ namespace WpfApp1.Views
 
 		private void RetrieveAllConsents()
 		{
-			string tableContent = ConsentAPI.RetrieveAllConsents(_viewModel.UserID);
+			string outputMessage = "";
+			List<string[]> tableContent = ConsentAPI.RetrieveAllConsents(_viewModel.UserID, out outputMessage);
 
-			if(tableContent != "")
+			if(tableContent != null)
 			{
-				string[] table = tableContent.Split(new string[] { "|n|" }, StringSplitOptions.None);
-
-				for(int i = 1; i < table.Length; i++)
+				foreach(string[] columns in tableContent)
 				{
-					string[] columns = table[i].Split(new string[] { "|t|" }, StringSplitOptions.None);
-
 					string userID = columns[0];
 					string permissionID = columns[1];
 					string createdTime = columns[2];
