@@ -103,11 +103,7 @@ namespace UI
 			string outputMessage = "";
 			bool isConsentGiven = ConsentAPI.CheckForConsent(Convert.ToInt32(this.userID), Convert.ToInt32(permissionChoice), out outputMessage);
 
-			if(isConsentGiven)
-			{
-				Console.WriteLine("Consent for this permission has already been given for this user.");
-			}
-			else
+			if(outputMessage != "" && !isConsentGiven)
 			{
 				Console.WriteLine(PermissionAPI.CreatePermissionRequest(this.userID, permissionChoice, duration));
 
@@ -115,6 +111,10 @@ namespace UI
 				dateDuration = DateTime.Now;
 				dateDuration = dateDuration.AddHours(Convert.ToDouble(duration));
 				Console.WriteLine(ConsentAPI.SaveConsent(Convert.ToInt32(this.userID), Convert.ToInt32(permissionChoice), dateDuration));
+			}
+			else
+			{
+				Console.WriteLine(outputMessage);
 			}
 		}
 
